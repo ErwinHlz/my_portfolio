@@ -38,11 +38,8 @@ jobs:
         run: npm run prettier:check
 
       - name: Build app
-        run: npm run build
+        run: npm run build -- --base-href /my_portfolio/
 
-      # ⬇️ Pfad an dein Projekt anpassen!
-      # Bei Angular 17 Standard: dist/<projektname>/browser
-      # Bei älteren oft: dist/<projektname>
       - name: Upload build as GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
