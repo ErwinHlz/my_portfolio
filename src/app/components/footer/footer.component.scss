@@ -1,0 +1,121 @@
+.site-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: env(safe-area-inset-bottom, 0);
+  width: 100%;
+  padding: 12px 18px;
+  color: var(--text-primary);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 40;
+  box-shadow: inset 0px -30px 30px -10px rgba(var(--accent-gold-rgb), 0.12);
+}
+
+.copyright-wrapper {
+  justify-self: right;
+}
+
+.footer__mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(0, 208, 196, 0.2),
+      transparent
+    ),
+    rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 12px 32px rgba(0, 0, 0, 0.4);
+  padding: 6px;
+}
+
+.footer__name {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.footer__copy {
+  margin: 2px 0 0;
+  color: rgba(232, 245, 244, 0.75);
+  font-size: 0.8rem;
+}
+
+.socials-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__label {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: rgba(232, 245, 244, 0.7);
+}
+
+.footer__links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.04);
+  transition: transform 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.footer__link:hover {
+  border-color: rgba(var(--accent-gold-rgb), 0.4);
+  color: var(--accent-gold);
+  transform: translateY(-2px);
+
+  svg {
+    fill: var(--accent-gold);
+  }
+}
+
+.footer__link svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 16px;
+    gap: 10px;
+  }
+
+  .footer__links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer__link {
+    gap: 6px;
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+
+  .footer__link svg {
+    width: 14px;
+    height: 14px;
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "dateStart": "before",
+      "dateEnd": "2020-06",
+      "title": "Abitur",
+      "institution": "Gymnasium Ottweiler",
+      "side": "right"
+    },
+    {
+      "id": "2",
+      "dateStart": "2020-09",
+      "dateEnd": "2023-01",
+      "title": "Ausbildung als Industriemechaniker",
+      "institution": "ZF Friedrichshafen AG",
+      "side": "left"
+    },
+    {
+      "id": "3",
+      "dateStart": "2023-10",
+      "dateEnd": "now",
+      "title": "Studium Praktische Informatik",
+      "institution": "HTW Saar",
+      "side": "right"
+    },
+    {
+      "id": "4",
+      "dateStart": "2023-01",
+      "dateEnd": "2023-10",
+      "title": "Industriemechaniker",
+      "institution": "ZF Friedrichshafen AG",
+      "side": "left"
+    },
+    {
+      "id": "5",
+      "dateStart": "2024-12",
+      "dateEnd": "2025-05",
+      "title": "Werkstudent",
+      "institution": "DIaLOGIKa GmbH",
+      "side": "right"
+    }
+  ]
+}

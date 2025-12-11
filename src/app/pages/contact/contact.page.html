@@ -1,0 +1,69 @@
+<ion-content [fullscreen]="true">
+  <section class="contact-hero">
+    <div class="hero__pill">Kontakt</div>
+    <h1>Schreib mir eine Nachricht</h1>
+  </section>
+
+  <section class="contact-grid">
+    <form class="contact-card" (submit)="openMailClient($event)" novalidate>
+      <div class="card__header">
+        <p class="eyebrow">E-Mail Formular</p>
+      </div>
+
+      <div class="form-grid">
+        <label class="form-field">
+          <span>Dein Name</span>
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="form.name"
+            placeholder="Wie darf ich dich ansprechen?"
+            autocomplete="name"
+          />
+        </label>
+
+        <label class="form-field">
+          <span>Deine E-Mail</span>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="form.email"
+            placeholder="dein"
+            autocomplete="email"
+          />
+        </label>
+
+        <label class="form-field form-field--full">
+          <span>Betreff</span>
+          <input
+            type="text"
+            name="subject"
+            [(ngModel)]="form.subject"
+            placeholder="Worum geht es?"
+            autocomplete="off"
+            required
+          />
+        </label>
+
+        <label class="form-field form-field--full">
+          <span>Nachricht</span>
+          <textarea
+            name="message"
+            rows="5"
+            [(ngModel)]="form.message"
+            placeholder="Kurz beschreiben, was du vorhast..."
+            required
+          ></textarea>
+        </label>
+      </div>
+
+      <button type="submit" class="send-btn">Mail-Programm öffnen</button>
+      <p class="helper-text">
+        Meine E-Mail:
+        <a href="mailto:erwinholzhauser.eh@gmail.com"
+          >erwinholzhauser.eh@gmail.com</a
+        >
+      </p>
+    </form>
+  </section>
+</ion-content>

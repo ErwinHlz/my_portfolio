@@ -1,0 +1,197 @@
+<ion-content [fullscreen]="true">
+  <section class="projects-hero">
+    <div class="hero__counts">
+      <div class="count-card count-card--left">
+        <span class="count-card__label">aktuell</span>
+        <span class="count-card__value">{{ currentProjects.length }}</span>
+      </div>
+    </div>
+    <div class="hero__text">
+      <p class="hero__eyebrow">Meine Projekte</p>
+      <h1>Aktuelle & abgeschlossene Projekte</h1>
+    </div>
+    <div class="hero__counts">
+      <div class="count-card count-card--right">
+        <span class="count-card__label">abgeschlossen</span>
+        <span class="count-card__value">{{ pastProjects.length }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="view-switcher" aria-label="Projekt-Ansicht wechseln">
+    <button
+      type="button"
+      class="switcher__btn"
+      [class.switcher__btn--active]="selectedView === 'current'"
+      (click)="setView('current')"
+    >
+      Aktuelle Projekte
+    </button>
+    <button
+      type="button"
+      class="switcher__btn"
+      [class.switcher__btn--active]="selectedView === 'past'"
+      (click)="setView('past')"
+    >
+      Vergangene Projekte
+    </button>
+  </section>
+
+  <section class="project-stage" *ngIf="activeProject">
+    <div class="stage-left">
+      <div class="section__header">
+        <p class="section__eyebrow">
+          {{ selectedView === 'current' ? 'Aktuell' : 'Bisher' }}
+        </p>
+        <h2>{{ activeProject.title }}</h2>
+      </div>
+      <div class="stage-meta">
+        <span class="pill pill--active" *ngIf="selectedView === 'current'">
+          {{ activeProject.status }}
+        </span>
+        <span class="pill pill--ghost">{{ activeProject.highlight }}</span>
+        <span class="project__period">{{ activeProject.period }}</span>
+      </div>
+      <p class="project__focus">{{ activeProject.focus }}</p>
+      <p class="project__summary">{{ activeProject.summary }}</p>
+      <div class="project__tags" aria-label="Tech Stack">
+        <span class="tag tag--small" *ngFor="let tag of activeProject.tags">
+          {{ tag }}
+        </span>
+      </div>
+      <div class="project__progress" *ngIf="activeProject.progress">
+        <div class="progress__track">
+          <div
+            class="progress__bar"
+            [style.width.%]="activeProject.progress"
+            role="progressbar"
+            [attr.aria-valuenow]="activeProject.progress"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+        <span class="progress__label"
+          >{{ activeProject.progress }}% fertig</span
+        >
+      </div>
+      <div class="stage-nav">
+        <button
+          type="button"
+          class="nav-btn"
+          (click)="prevProject()"
+          [disabled]="activeProjectIndex === 0"
+        >
+          ← Zurück
+        </button>
+        <span class="stage-nav__pos"
+          >{{ activeProjectIndex + 1 }} / {{ activeProjects.length }}</span
+        >
+        <button
+          type="button"
+          class="nav-btn"
+          (click)="nextProject()"
+          [disabled]="activeProjectIndex === activeProjects.length - 1"
+        >
+          Weiter →
+        </button>
+      </div>
+    </div>
+
+    <div class="stage-right" *ngIf="activeProject.previews?.length">
+      <div
+        class="book"
+        [style.--accent]="activeProject.accent || 'var(--accent-gold)'"
+      >
+        <svg
+          class="book__bg"
+          viewBox="0 0 968.41 785.17"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="/assets/buch.svg#book-illustration"></use>
+        </svg>
+        <div class="page page--left">
+          <span class="preview__label">
+            Einblick {{ activePreviewIndex + 1 }} / {{
+            activeProject.previews.length }}
+          </span>
+          <h4>{{ activeProject.previews[activePreviewIndex].title }}</h4>
+          <p class="preview__text">
+            {{ activeProject.previews[activePreviewIndex].description }}
+          </p>
+        </div>
+        <div class="page page--right">
+          <img
+            *ngIf="activeProject.previews[activePreviewIndex]?.image"
+            class="page__image"
+            [src]="activeProject.previews[activePreviewIndex].image"
+            [alt]="activeProject.previews[activePreviewIndex].title || 'Projekt-Einblick'"
+            tabindex="0"
+            role="button"
+            [attr.aria-label]="
+              (activeProject.previews[activePreviewIndex].title || 'Projekt-Einblick') +
+              ' vergrößert anzeigen'
+            "
+            (click)="openPreviewImage(activeProject.previews[activePreviewIndex])"
+            (keydown.enter)="openPreviewImage(activeProject.previews[activePreviewIndex])"
+            (keydown.space)="openPreviewImage(activeProject.previews[activePreviewIndex]); $event.preventDefault()"
+            loading="lazy"
+          />
+        </div>
+        <div class="stage-nav stage-nav--preview">
+          <button
+            type="button"
+            class="nav-btn"
+            (click)="prevPreview()"
+            [disabled]="activePreviewIndex === 0"
+          >
+            ◀ Seite zurück
+          </button>
+          <span class="stage-nav__pos"
+            >{{ activePreviewIndex + 1 }} / {{ activeProject.previews.length
+            }}</span
+          >
+          <button
+            type="button"
+            class="nav-btn"
+            (click)="nextPreview()"
+            [disabled]="activePreviewIndex === activeProject.previews.length - 1"
+          >
+            Seite vor ▶
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div
+    class="image-lightbox"
+    *ngIf="isPreviewImageOpen"
+    (click)="closePreviewImage()"
+  >
+    <div
+      class="image-lightbox__dialog"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="activePreviewTitle"
+      (click)="$event.stopPropagation()"
+    >
+      <button
+        type="button"
+        class="image-lightbox__close"
+        aria-label="Schließen"
+        (click)="closePreviewImage()"
+      >
+        ✕
+      </button>
+      <img
+        [src]="activePreviewImage"
+        [alt]="activePreviewTitle"
+        class="image-lightbox__img"
+      />
+      <p class="image-lightbox__caption" *ngIf="activePreviewTitle">
+        {{ activePreviewTitle }}
+      </p>
+    </div>
+  </div>
+</ion-content>

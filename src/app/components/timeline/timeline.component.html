@@ -1,0 +1,82 @@
+<div class="timeline-wrapper" *ngIf="events.length; else emptyTimeline">
+  <div class="timeline-shell">
+    <div class="timeline-track" [style.width.px]="trackWidth">
+      <div class="timeline-axis" aria-hidden="true"></div>
+
+      <div
+        class="quarter-tick"
+        *ngFor="let q of quarterTicks"
+        [style.left]="positionForYear(q) + '%'"
+      ></div>
+
+      <div
+        class="year-tick"
+        *ngFor="let y of yearTicks"
+        [style.left]="positionForYear(y) + '%'"
+      >
+        <span>{{ y }}</span>
+      </div>
+
+      <div
+        class="event-bar"
+        *ngFor="let ev of events"
+        [style.left]="ev.leftPct + '%'"
+        [style.width]="ev.widthPct + '%'"
+        [style.top]="computeTop(ev.row)"
+        [style.--accent]="ev.accent"
+        [class.event-bar--open-start]="ev.openStart"
+        [class.event-bar--open-end]="ev.openEnd"
+      >
+        <span
+          class="event-start"
+          aria-hidden="true"
+          [class.event-start--top]="ev.row === 0"
+          [class.event-start--bottom]="ev.row === 1"
+        ></span>
+        <span
+          class="event-end"
+          aria-hidden="true"
+          [class.event-end--top]="ev.row === 0"
+          [class.event-end--bottom]="ev.row === 1"
+        ></span>
+        <span
+          class="event-bar__cap event-bar__cap--start"
+          *ngIf="ev.openStart"
+          aria-hidden="true"
+        ></span>
+        <span
+          class="event-bar__cap event-bar__cap--end"
+          *ngIf="ev.openEnd"
+          aria-hidden="true"
+        ></span>
+        <span class="event-label">{{ ev.title }}</span>
+        <div class="event-pop" aria-hidden="true">
+          <p class="event-pop__title">{{ ev.title }}</p>
+          <p class="event-pop__meta">{{ ev.dateStart }} → {{ ev.dateEnd }}</p>
+          <p class="event-pop__meta" *ngIf="ev.institution">
+            {{ ev.institution }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-legend">
+      <div class="legend-item">
+        <span class="legend-dot legend-dot--start" aria-hidden="true"></span>
+        <span>Event-Beginn</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-rect legend-rect--end" aria-hidden="true"></span>
+        <span>Event-Ende</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyTimeline>
+  <div class="timeline-wrapper">
+    <div class="timeline-head">
+      <h2>Timeline</h2>
+      <p>Keine Events gefunden.</p>
+    </div>
+  </div>
+</ng-template>

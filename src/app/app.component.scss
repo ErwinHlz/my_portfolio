@@ -1,0 +1,15 @@
+app-navbar,
+app-footer {
+  position: relative;
+  z-index: 100;
+}
+
+#content-wrapper {
+  padding-bottom: 90px;
+}
+
+@media (max-width: 768px) {
+  #content-wrapper {
+    padding-bottom: 110px;
+  }
+}

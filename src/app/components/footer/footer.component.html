@@ -1,0 +1,26 @@
+<div>
+  <footer class="site-footer">
+    <div class="socials-wrapper">
+      <div class="footer__links">
+        <a
+          *ngFor="let link of socialLinks"
+          class="footer__link"
+          [href]="link.href"
+          target="_blank"
+          rel="noreferrer noopener"
+          [attr.aria-label]="link.label"
+        >
+          <svg>
+            <use [attr.href]="link.icon"></use>
+          </svg>
+          <span>{{ link.label }}</span>
+        </a>
+      </div>
+    </div>
+    <div class="copyright-wrapper">
+      <p class="footer__copy">
+        &copy; {{ currentYear }} Erwin Holzhauser. All rights served.
+      </p>
+    </div>
+  </footer>
+</div>

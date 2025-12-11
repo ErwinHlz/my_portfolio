@@ -1,0 +1,22 @@
+{
+  "skills": [
+    { "name": "Angular", "color": "#dd0031", "icon": "angular" },
+    { "name": "Ionic", "color": "#3880ff", "icon": "ionic" },
+    { "name": "Node.js", "color": "#6cc24a", "icon": "nodejs" },
+    { "name": "Tailwind", "color": "#38bdf8", "icon": "tailwind" },
+    { "name": "Java", "color": "#f05133", "icon": "java" },
+    { "name": "C++", "color": "#f05133", "icon": "cpp" },
+    { "name": "Github", "color": "#f05133", "icon": "github" },
+    { "name": "HTML", "color": "#f05133", "icon": "html" },
+    { "name": "CSS", "color": "#f05133", "icon": "css" },
+    { "name": "JavaScript", "color": "#f05133", "icon": "javascript" },
+    { "name": "Spring", "color": "#f05133", "icon": "spring" },
+    { "name": "TypeScript", "color": "#f05133", "icon": "typescript" },
+    { "name": "Vue.js", "color": "#f05133", "icon": "vue" },
+    { "name": "Astro", "color": "#f05133", "icon": "astro" },
+    { "name": "Umbraco", "color": "#f05133", "icon": "umbraco" },
+    { "name": "Gradle", "color": "#3880ff", "icon": "gradle" },
+    { "name": "Maven", "color": "#3880ff", "icon": "maven" },
+    { "name": "PostgreSQL", "color": "#3880ff", "icon": "postgreSQL" }
+  ]
+}

@@ -24,6 +24,7 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&family=UnifrakturCook:wght@700&display=swap");
 
 /**
  * Ionic Dark Mode
@@ -34,4 +35,60 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+ion-header,
+ion-toolbar {
+  --background: transparent !important;
+  --ion-color-base: transparent !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+}
+
+:root {
+  color: var(--text-primary);
+  background-color: var(--color-night);
+  font-family: var(--font-body);
+}
+
+body {
+  background: var(--color-night);
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--accent-gold);
+}
+
+h1,
+h2,
+h3,
+.hero__title,
+.section__header h2 {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+.hero__eyebrow,
+.eyebrow,
+nav a {
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+}
+
+/* Default Page Background (matches My Projects) */
+ion-app,
+ion-content {
+  --background: radial-gradient(
+      circle at 10% 10%,
+      rgba(var(--accent-ice-rgb), 0.06),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(var(--accent-gold-rgb), 0.08),
+      transparent 30%
+    ),
+    var(--color-night);
+  color: var(--text-primary);
+}
