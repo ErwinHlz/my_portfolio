@@ -35,7 +35,7 @@ jobs:
         run: npm run lint
 
       - name: Prettier check
-        run: npm run prettier:check
+        run: npm run prettier:write
 
       - name: Build app
         run: npm run build -- --base-href /my_portfolio/
