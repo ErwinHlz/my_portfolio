@@ -40,6 +40,7 @@ body {
   text-decoration: none;
   margin: 12px;
   text-shadow: -1px -1px 0 black;
+  font-family: var(--font-accent);
 }
 
 .header-center a.active {
@@ -149,6 +150,7 @@ body {
   font-weight: bold;
   text-decoration: none;
   text-shadow: -1px -1px 0 black;
+  font-family: var(--font-accent);
 }
 
 .side-nav a:hover {
