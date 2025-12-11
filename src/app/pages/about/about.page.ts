@@ -29,27 +29,27 @@ export class AboutPage implements OnInit {
     {
       name: 'Fußball',
       icon: 'fussball',
-      image: '/assets/hobbies/me_soccer_anime.png',
+      image: 'assets/hobbies/me_soccer_anime.png',
     },
     {
       name: 'Jugendtrainer',
       icon: 'jugendtrainer',
-      image: '/assets/hobbies/me_jugendtrainer_anime.png',
+      image: 'assets/hobbies/me_jugendtrainer_anime.png',
     },
     {
       name: 'Volleyball',
       icon: 'volleyball',
-      image: '/assets/hobbies/me_volleyball_anime.png',
+      image: 'assets/hobbies/me_volleyball_anime.png',
     },
     {
       name: 'Fitness',
       icon: 'fitness',
-      image: '/assets/hobbies/me_muscleup_anime.png',
+      image: 'assets/hobbies/me_muscleup_anime.png',
     },
     {
       name: 'Gaming',
       icon: 'gaming',
-      image: '/assets/hobbies/me_gaming_anime.png',
+      image: 'assets/hobbies/me_gaming_anime.png',
     },
   ];
 
