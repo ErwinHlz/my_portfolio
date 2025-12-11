@@ -23,7 +23,7 @@ export class AboutPage implements OnInit {
   @ViewChildren('sec') sections!: QueryList<ElementRef<HTMLElement>>;
 
   skills: Skill[] = [];
-  private readonly defaultScrollImage = '/assets/hobbies/placeholder.png';
+  private readonly defaultScrollImage = 'assets/hobbies/placeholder.png';
   activeScrollImage = this.defaultScrollImage;
   hobbies = [
     {
