@@ -40,6 +40,9 @@ jobs:
       - name: Build app
         run: npm run build -- --base-href /my_portfolio/
 
+      - name: Add SPA fallback (404.html)
+        run: cp www/index.html www/404.html
+
       - name: Upload build as GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
