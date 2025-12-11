@@ -14,10 +14,10 @@ export class BgGridComponent implements OnInit {
   @Input() interactive = true;
 
   images = [
-    '/assets/background/me_anzug.jpeg',
-    '/assets/background/me_sunset.jpeg',
-    '/assets/background/me_coding.jpeg',
-    '/assets/background/me_waterfall.png',
+    'assets/background/me_anzug.jpeg',
+    'assets/background/me_sunset.jpeg',
+    'assets/background/me_coding.jpeg',
+    'assets/background/me_waterfall.png',
     'assets/background/me_stormtrooper.png',
     'assets/background/me_soccer.png',
   ];

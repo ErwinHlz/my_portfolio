@@ -38,12 +38,12 @@ export class MyProjectsPage implements OnDestroy {
           title: 'interaktiver Background',
           description:
             'Drag-and-Drop Effekt, welcher ein einzigartiges und lebendiges UI-Erlebnis liefert',
-          image: '/assets/projects/portfolio_1.png',
+          image: 'assets/projects/portfolio_1.png',
         },
         {
           title: 'Timeline',
           description: 'Ein visuell anschaulicher Zeitstrahl meines Werdegangs',
-          image: '/assets/projects/portfolio_2.png',
+          image: 'assets/projects/portfolio_2.png',
         },
       ],
     },
@@ -85,19 +85,19 @@ export class MyProjectsPage implements OnDestroy {
           title: 'Kalender',
           description:
             'Tages-/Wochenansicht mit automatisch eingetragenen Terminen.',
-          image: '/assets/projects/terminplaner_2.png',
+          image: 'assets/projects/terminplaner_2.png',
         },
         {
           title: 'User-Handling',
           description:
             'Registrierung, Login und Rollen für verschiedene Benutzer.',
-          image: '/assets/projects/terminplaner_3.png',
+          image: 'assets/projects/terminplaner_3.png',
         },
         {
           title: 'Terminlogik',
           description:
             'Regelbasierte Erstellung und Aktualisierung von Terminen.',
-          image: '/assets/projects/terminplaner_1.png',
+          image: 'assets/projects/terminplaner_1.png',
           video: '',
         },
       ],
@@ -119,12 +119,12 @@ export class MyProjectsPage implements OnDestroy {
           title: 'Interaktives Feuerwehrauto',
           description:
             'Anklickbares Feuerwehrauto mit Erklärungen zu Ausrüstung und Funktionen.',
-          image: '/assets/projects/fw_1.png',
+          image: 'assets/projects/fw_1.png',
         },
         {
           title: 'Hydranten-Suchspiel',
           description: 'Minispiel zum Finden des Hydranten auf einer Karte',
-          image: '/assets/projects/fw_2.png',
+          image: 'assets/projects/fw_2.png',
         },
       ],
     },
