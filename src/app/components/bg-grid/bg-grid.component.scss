@@ -1,52 +1,43 @@
 :host {
   position: fixed;
   inset: 0;
-  z-index: -1; // Basis-Layer
+  z-index: -1;
   display: block;
 }
-
 .bg-root {
   position: fixed;
   inset: 0;
   width: 200vw;
   height: 200vh;
-
   overflow: hidden;
   user-select: none;
   will-change: transform;
-  transform-origin: center center;
-  pointer-events: none; // rein visueller Layer
+  transform-origin: center;
+  pointer-events: none;
 }
-
 .bg-root.is-interactive {
   pointer-events: auto;
   cursor: grab;
 }
-
 .bg-tile {
   position: absolute;
   width: 400px;
   height: 400px;
   background-size: cover;
   background-position: center;
-
-  filter: drop-shadow(-15px -15px 10px rgb(75, 68, 49));
-
+  filter: drop-shadow(-15px -15px 10px rgb(75 68 49));
   will-change: transform, background-image;
 }
-
-[panDrag] .bg-inner {
-  transform-origin: center center;
+[appPanDrag] .bg-inner {
+  transform-origin: center;
   transition: transform 150ms ease;
   will-change: transform;
 }
-
-[panDrag]:active .bg-inner {
+[appPanDrag]:active .bg-inner {
   transform: scale(0.9);
 }
-
 @media (max-width: 1024px) {
   .bg-tile {
-    filter: drop-shadow(-10px -10px 5px rgb(75, 68, 49));
+    filter: drop-shadow(-10px -10px 5px rgb(75 68 49));
   }
 }

@@ -2,22 +2,22 @@
   class="bg-root"
   id="bg-root"
   [class.is-interactive]="interactive"
-  panDrag
+  appPanDrag
   (panDelta)="onPanDelta($event)"
 >
   <div class="bg-inner">
     @for (g of grids; track g) {
-    <div class="grid-layer" [style.transform]="gridTransform(g)">
-      @for (i of tiles; track i) {
-      <div
-        class="bg-tile"
-        [style.transform]="tileTransform(i)"
-        [style.background-image]="'url(' + tileImage(i) + ')'"
-        [style.width.px]="tileSize"
-        [style.height.px]="tileSize"
-      ></div>
-      }
-    </div>
+      <div class="grid-layer" [style.transform]="gridTransform(g)">
+        @for (i of tiles; track i) {
+          <div
+            class="bg-tile"
+            [style.transform]="tileTransform(i)"
+            [style.background-image]="'url(' + tileImage(i) + ')'"
+            [style.width.px]="tileSize"
+            [style.height.px]="tileSize"
+          ></div>
+        }
+      </div>
     }
   </div>
 </div>

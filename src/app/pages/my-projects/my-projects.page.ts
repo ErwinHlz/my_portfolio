@@ -10,7 +10,7 @@ import { IonicModule } from '@ionic/angular';
   standalone: true,
   imports: [CommonModule, IonicModule, FormsModule],
 })
-export class MyProjectsPage implements OnInit, OnDestroy {
+export class MyProjectsPage implements OnDestroy {
   selectedView: 'current' | 'past' = 'current';
   activeProjectIndex = 0;
   activePreviewIndex = 0;
@@ -38,12 +38,12 @@ export class MyProjectsPage implements OnInit, OnDestroy {
           title: 'interaktiver Background',
           description:
             'Drag-and-Drop Effekt, welcher ein einzigartiges und lebendiges UI-Erlebnis liefert',
-          image: '/assets/portfolio_1.png',
+          image: '/assets/projects/portfolio_1.png',
         },
         {
           title: 'Timeline',
           description: 'Ein visuell anschaulicher Zeitstrahl meines Werdegangs',
-          image: '/assets/portfolio_2.png',
+          image: '/assets/projects/portfolio_2.png',
         },
       ],
     },
@@ -85,19 +85,19 @@ export class MyProjectsPage implements OnInit, OnDestroy {
           title: 'Kalender',
           description:
             'Tages-/Wochenansicht mit automatisch eingetragenen Terminen.',
-          image: '/assets/terminplaner_2.png',
+          image: '/assets/projects/terminplaner_2.png',
         },
         {
           title: 'User-Handling',
           description:
             'Registrierung, Login und Rollen für verschiedene Benutzer.',
-          image: '/assets/terminplaner_3.png',
+          image: '/assets/projects/terminplaner_3.png',
         },
         {
           title: 'Terminlogik',
           description:
             'Regelbasierte Erstellung und Aktualisierung von Terminen.',
-          image: '/assets/terminplaner_1.png',
+          image: '/assets/projects/terminplaner_1.png',
           video: '',
         },
       ],
@@ -119,12 +119,12 @@ export class MyProjectsPage implements OnInit, OnDestroy {
           title: 'Interaktives Feuerwehrauto',
           description:
             'Anklickbares Feuerwehrauto mit Erklärungen zu Ausrüstung und Funktionen.',
-          image: '/assets/fw_1.png',
+          image: '/assets/projects/fw_1.png',
         },
         {
           title: 'Hydranten-Suchspiel',
           description: 'Minispiel zum Finden des Hydranten auf einer Karte',
-          image: '/assets/fw_2.png',
+          image: '/assets/projects/fw_2.png',
         },
       ],
     },
@@ -211,10 +211,6 @@ export class MyProjectsPage implements OnInit, OnDestroy {
       this.videoTimeoutId = undefined;
     }
   }
-
-  constructor() {}
-
-  ngOnInit() {}
 
   ngOnDestroy(): void {
     if (this.videoTimeoutId) {

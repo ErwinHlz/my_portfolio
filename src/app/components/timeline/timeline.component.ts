@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { TimelineEndpoint, TimelineEvent } from '../../models/timeline.models';
 import { TimelineService } from '../../services/timeline.service';
@@ -40,7 +40,7 @@ export class TimelineComponent implements OnInit {
     'var(--accent-mint)',
   ];
 
-  constructor(private timelineService: TimelineService) {}
+  private readonly timelineService = inject(TimelineService);
 
   ngOnInit(): void {
     this.timelineService.getTimeline().subscribe({
@@ -78,7 +78,7 @@ export class TimelineComponent implements OnInit {
       : this.currentYear;
     const baseMaxYear = Math.max(
       this.currentYear,
-      numericYears.length ? Math.max(...numericYears) : this.currentYear
+      numericYears.length ? Math.max(...numericYears) : this.currentYear,
     );
 
     const axisStart = baseMinYear;
@@ -158,7 +158,7 @@ export class TimelineComponent implements OnInit {
   private resolveEndpoint(
     value: TimelineEndpoint,
     axisStart: number,
-    isStart: boolean
+    isStart: boolean,
   ): { year: number; month: number; open: boolean } {
     if (value === 'before') {
       return { year: axisStart - 1, month: isStart ? 1 : 12, open: true };
@@ -174,7 +174,7 @@ export class TimelineComponent implements OnInit {
       const month = this.clamp(
         Math.floor(monthRaw ?? (isStart ? 1 : 12)),
         1,
-        12
+        12,
       );
       return { year, month, open: false };
     }

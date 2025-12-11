@@ -104,7 +104,8 @@
     color-mix(in srgb, var(--accent) 30%, var(--surface-shadow))
   );
   border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45),
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.45),
     0 0 0 1px rgba(231, 217, 182, 0.12);
   display: grid;
   align-items: center;
@@ -112,7 +113,9 @@
   gap: 6px;
   top: 70px;
   color: var(--color-night);
-  transition: transform 120ms ease, box-shadow 160ms ease;
+  transition:
+    transform 120ms ease,
+    box-shadow 160ms ease;
   cursor: alias;
   font-size: clamp(10px, 0.8vw + 8px, 13px);
 }
@@ -125,7 +128,8 @@
   transform: translate(-50%, -50%) rotate(8deg);
   border-radius: 50%;
   border: 2px solid color-mix(in srgb, var(--accent) 80%, var(--accent-gold));
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35),
+  box-shadow:
+    0 0 0 2px rgba(0, 0, 0, 0.35),
     0 0 10px color-mix(in srgb, var(--accent) 50%, transparent);
   background: radial-gradient(
     circle at 35% 35%,
@@ -155,7 +159,8 @@
   transform: translate(50%, -50%);
   border-radius: 20%;
   border: 2px solid color-mix(in srgb, var(--accent) 80%, var(--accent-gold));
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35),
+  box-shadow:
+    0 0 0 2px rgba(0, 0, 0, 0.35),
     0 0 10px color-mix(in srgb, var(--accent) 50%, transparent);
   background: radial-gradient(
     circle at 65% 65%,
@@ -277,7 +282,9 @@
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 140ms ease, transform 140ms ease;
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease;
 }
 
 .event-pop::after {

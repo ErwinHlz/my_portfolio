@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Skill } from '../models/skill.model';
@@ -11,7 +11,7 @@ interface SkillsPayload {
   providedIn: 'root',
 })
 export class SkillsService {
-  constructor(private http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   getSkills(): Observable<Skill[]> {
     return this.http

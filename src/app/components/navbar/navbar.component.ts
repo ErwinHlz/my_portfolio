@@ -1,12 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  HostListener,
-} from '@angular/core';
+import { Component, Output, EventEmitter, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -16,11 +10,9 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, IonicModule, RouterModule],
   standalone: true,
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   isMenuOpen: boolean = false;
   @Output() menuToggled: EventEmitter<boolean> = new EventEmitter<boolean>();
-  constructor() {}
-  ngOnInit() {}
   async toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
     this.menuToggled.emit(this.isMenuOpen);

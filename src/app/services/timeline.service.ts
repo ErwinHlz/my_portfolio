@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { TimelineEvent } from '../models/timeline.models';
@@ -11,7 +11,7 @@ interface TimelinePayload {
   providedIn: 'root',
 })
 export class TimelineService {
-  constructor(private http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   getTimeline(): Observable<TimelineEvent[]> {
     return this.http

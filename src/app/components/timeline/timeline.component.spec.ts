@@ -9,8 +9,8 @@ describe('TimelineComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimelineComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [TimelineComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TimelineComponent);

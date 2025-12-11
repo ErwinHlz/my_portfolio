@@ -47,7 +47,8 @@ section {
     rgba(18, 18, 18, 0.78),
     rgba(6, 6, 6, 0.85)
   );
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04),
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
     0 8px 26px rgba(0, 0, 0, 0.38);
   display: grid;
   justify-content: center;
@@ -312,7 +313,10 @@ section {
   transform: translateX(-5%);
   filter: sepia();
   cursor: zoom-in;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, outline-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    outline-color 0.2s ease;
 }
 
 .page__image:hover,
@@ -371,7 +375,9 @@ section {
   display: grid;
   gap: 8px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
     border-color 0.25s ease;
 }
 
@@ -546,7 +552,9 @@ section {
   border-radius: 12px;
   text-decoration: none;
   font-weight: 700;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 12px 32px rgba(var(--accent-gold-rgb), 0.35);
 }
 

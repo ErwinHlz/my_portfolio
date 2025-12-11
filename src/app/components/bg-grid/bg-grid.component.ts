@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { PanDragDirective } from '../../pages/home/pan-drag.directive';
+import { PanDragDirective } from './pan-drag.directive';
 
 @Component({
   selector: 'app-bg-grid',
@@ -14,12 +14,12 @@ export class BgGridComponent implements OnInit {
   @Input() interactive = true;
 
   images = [
-    '/assets/erwin_anzug.jpeg',
-    '/assets/me_sunset.jpeg',
-    '/assets/me_coding.jpeg',
-    '/assets/me_waterfall.png',
-    'assets/me_stormtrooper.png',
-    'assets/me_soccer.png',
+    '/assets/background/me_anzug.jpeg',
+    '/assets/background/me_sunset.jpeg',
+    '/assets/background/me_coding.jpeg',
+    '/assets/background/me_waterfall.png',
+    'assets/background/me_stormtrooper.png',
+    'assets/background/me_soccer.png',
   ];
 
   cols = 16;

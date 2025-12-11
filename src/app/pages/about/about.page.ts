@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   Component,
   ElementRef,
+  inject,
   OnInit,
   QueryList,
   ViewChildren,
@@ -22,29 +23,37 @@ export class AboutPage implements OnInit {
   @ViewChildren('sec') sections!: QueryList<ElementRef<HTMLElement>>;
 
   skills: Skill[] = [];
-  private readonly defaultScrollImage = '/assets/placeholder.png';
+  private readonly defaultScrollImage = '/assets/hobbies/placeholder.png';
   activeScrollImage = this.defaultScrollImage;
   hobbies = [
-    { name: 'Fußball', icon: 'fussball', image: '/assets/me_soccer_anime.png' },
+    {
+      name: 'Fußball',
+      icon: 'fussball',
+      image: '/assets/hobbies/me_soccer_anime.png',
+    },
     {
       name: 'Jugendtrainer',
       icon: 'jugendtrainer',
-      image: '/assets/me_jugendtrainer_anime.png',
+      image: '/assets/hobbies/me_jugendtrainer_anime.png',
     },
     {
       name: 'Volleyball',
       icon: 'volleyball',
-      image: '/assets/me_volleyball_anime.png',
+      image: '/assets/hobbies/me_volleyball_anime.png',
     },
     {
       name: 'Fitness',
       icon: 'fitness',
-      image: '/assets/me_muscleup_anime.png',
+      image: '/assets/hobbies/me_muscleup_anime.png',
     },
-    { name: 'Gaming', icon: 'gaming', image: '/assets/me_gaming_anime.png' },
+    {
+      name: 'Gaming',
+      icon: 'gaming',
+      image: '/assets/hobbies/me_gaming_anime.png',
+    },
   ];
 
-  constructor(private skillsService: SkillsService) {}
+  private readonly skillsService = inject(SkillsService);
 
   ngOnInit(): void {
     this.skillsService.getSkills().subscribe({

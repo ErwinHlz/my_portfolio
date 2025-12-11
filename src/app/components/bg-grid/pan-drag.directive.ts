@@ -6,10 +6,11 @@ import {
   OnDestroy,
   Output,
   EventEmitter,
+  inject,
 } from '@angular/core';
 
 @Directive({
-  selector: '[panDrag]',
+  selector: '[appPanDrag]',
 })
 export class PanDragDirective implements OnDestroy {
   private startX = 0;
@@ -33,10 +34,12 @@ export class PanDragDirective implements OnDestroy {
   private hoverVY = 0;
 
   @Output() panDelta = new EventEmitter<{ dx: number; dy: number }>();
+  private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly renderer = inject(Renderer2);
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {
-    this.renderer.setStyle(this.el.nativeElement, 'position', 'relative');
-    this.renderer.setStyle(this.el.nativeElement, 'cursor', 'grab');
+  constructor() {
+    this.renderer.setStyle(this.element.nativeElement, 'position', 'relative');
+    this.renderer.setStyle(this.element.nativeElement, 'cursor', 'grab');
   }
 
   private startMomentum() {
@@ -96,9 +99,11 @@ export class PanDragDirective implements OnDestroy {
     this.lastPointerX = event.clientX;
     this.lastPointerY = event.clientY;
     try {
-      (this.el.nativeElement as Element).setPointerCapture(event.pointerId);
+      (this.element.nativeElement as Element).setPointerCapture(
+        event.pointerId,
+      );
     } catch (e) {}
-    this.renderer.setStyle(this.el.nativeElement, 'cursor', 'grabbing');
+    this.renderer.setStyle(this.element.nativeElement, 'cursor', 'grabbing');
   }
 
   @HostListener('document:pointermove', ['$event'])
@@ -146,11 +151,11 @@ export class PanDragDirective implements OnDestroy {
   onPointerUp(event?: PointerEvent) {
     this.dragging = false;
     try {
-      (this.el.nativeElement as Element).releasePointerCapture(
-        event?.pointerId || 0
+      (this.element.nativeElement as Element).releasePointerCapture(
+        event?.pointerId || 0,
       );
     } catch (e) {}
-    this.renderer.setStyle(this.el.nativeElement, 'cursor', 'grab');
+    this.renderer.setStyle(this.element.nativeElement, 'cursor', 'grab');
     // start simple momentum
     this.startMomentum();
   }

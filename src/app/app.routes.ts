@@ -20,7 +20,7 @@ export const routes: Routes = [
     path: 'my-projects',
     loadComponent: () =>
       import('./pages/my-projects/my-projects.page').then(
-        (m) => m.MyProjectsPage
+        (m) => m.MyProjectsPage,
       ),
   },
   {

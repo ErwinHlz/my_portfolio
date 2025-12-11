@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { PanDragDirective } from './pan-drag.directive';
+import { PanDragDirective } from '../../components/bg-grid/pan-drag.directive';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { BgGridComponent } from 'src/app/components/bg-grid/bg-grid.component';

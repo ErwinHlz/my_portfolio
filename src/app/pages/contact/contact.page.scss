@@ -124,7 +124,9 @@ section {
   color: var(--text-primary);
   font-size: 15px;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .form-field textarea {
@@ -151,7 +153,9 @@ section {
   color: var(--color-night);
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
 }
 
 .send-btn:hover {
@@ -213,7 +217,9 @@ section {
   text-decoration: none;
   font-weight: 600;
   width: fit-content;
-  transition: background 0.2s ease, transform 0.15s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
 }
 
 .ghost-btn:hover {

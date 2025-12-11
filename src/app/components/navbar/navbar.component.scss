@@ -54,7 +54,7 @@ body {
 }
 
 .side-nav a.active::before {
-  content: url("/assets/pfeil.svg");
+  content: url("/assets/opticals/pfeil.svg");
   color: var(--accent-ember);
   position: relative;
   right: 1rem;
@@ -71,7 +71,10 @@ body {
   right: 1rem;
   cursor: pointer;
   padding: 8px;
-  transition: color 0.2s ease, transform 0.2s ease, border-color 0.2s ease,
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease,
     filter 0.2s ease;
   background-color: transparent;
 }
@@ -98,7 +101,8 @@ body {
   position: absolute;
   right: 0;
   top: 0;
-  background-image: radial-gradient(
+  background-image:
+    radial-gradient(
       circle at 50% 0%,
       rgba(3, 15, 10, 0.95) 0,
       transparent 130%
