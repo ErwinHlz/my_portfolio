@@ -169,7 +169,12 @@ body {
 }
 
 .logo {
-  color: var(--accent-gold-rgb);
+  width: 3.6rem;
+  height: auto;
+  display: block;
+  color: rgb(var(--accent-gold-rgb)); // explicit color so Safari resolves currentColor
+  fill: currentColor;
+  stroke: currentColor;
   scale: 1;
   filter: drop-shadow(0 0 5px var(--accent-gold));
 }
