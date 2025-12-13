@@ -279,6 +279,7 @@ section {
   z-index: 0;
   pointer-events: none;
   filter: drop-shadow(0 0 8px white);
+  object-fit: contain;
 }
 
 .page {
