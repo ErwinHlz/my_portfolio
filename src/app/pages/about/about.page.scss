@@ -135,6 +135,10 @@ ion-content::part(scroll) {
   width: 100%;
 }
 
+.timeline-component {
+  justify-self: center;
+}
+
 .section__inner {
   padding: 50px;
 }
@@ -516,5 +520,24 @@ ion-content::part(scroll) {
   .schriftrolle-wrapper img {
     scale: 2.7;
     transform: translate(-15%, 15%);
+  }
+
+  /* Timeline: align snap start and pull content to top on mobile */
+  .section--timeline {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 40px 12px 24px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .section--timeline .section__inner {
+    width: 100%;
+    padding: 0 0 16px;
+  }
+
+  .timeline-head {
+    margin: 0 0 12px;
+    text-align: left;
   }
 }

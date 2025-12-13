@@ -13,9 +13,9 @@
   text-transform: uppercase;
 }
 
-ion-content::part(scroll) {
-  overflow: hidden;
-  overscroll-behavior: contain;
+.home-content::part(scroll) {
+  overflow-y: hidden;
+  overscroll-behavior-y: contain;
 }
 
 @media (width <= 600px) {
