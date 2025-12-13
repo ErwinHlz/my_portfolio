@@ -284,6 +284,13 @@ section {
   mix-blend-mode: normal;
 }
 
+/* Opera-specific quirk: drop-shadow on SVG can render black */
+@supports (-o-object-fit: fill) {
+  .book__bg {
+    filter: none;
+  }
+}
+
 .page {
   height: 100%;
   min-height: 0;
@@ -376,6 +383,37 @@ section {
 
 .stage-nav--preview--mobile {
   display: none;
+}
+
+/* Tablet layout tweaks */
+@media (min-width: 768px) and (max-width: 1400px) {
+  .project-stage {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stage-left {
+    order: 1;
+  }
+
+  .stage-right {
+    order: 2;
+    width: 90vw;
+    max-width: 760px;
+    justify-self: center;
+    transform: none;
+  }
+
+  .book {
+    width: 100%;
+    max-width: 760px;
+    height: clamp(320px, 60vh, 520px);
+  }
+
+  .stage-nav--preview {
+    gap: 32px;
+    inset: auto 0 10px;
+  }
 }
 
 .project-card {

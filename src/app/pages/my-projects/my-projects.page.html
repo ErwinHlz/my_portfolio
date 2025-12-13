@@ -139,19 +139,13 @@
         class="book"
         [style.--accent]="activeProject.accent || 'var(--accent-gold)'"
       >
-        <object
+        <img
           class="book__bg"
-          type="image/svg+xml"
-          data="assets/opticals/buch.svg"
-          aria-hidden="true"
-        >
-          <img
-            src="assets/opticals/buch.svg"
-            alt=""
-            loading="lazy"
-            decoding="async"
-          />
-        </object>
+          src="assets/opticals/buch.svg"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
         <div class="page page--left">
           <span class="preview__label">
             Einblick {{ activePreviewIndex + 1 }} / {{
