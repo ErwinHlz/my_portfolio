@@ -15,17 +15,17 @@ export class FooterComponent {
     {
       label: 'GitHub',
       href: 'https://github.com/ErwinHlz',
-      icon: 'assets/logos/icons.svg#icon-github',
+      icon: '#icon-github',
     },
     {
       label: 'Instagram',
       href: 'https://www.instagram.com/erwin.hlz/',
-      icon: 'assets/logos/icons.svg#icon-instagram',
+      icon: '#icon-instagram',
     },
     {
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/erwin-holzhauser-018110299/',
-      icon: 'assets/logos/icons.svg#icon-linkedin',
+      icon: '#icon-linkedin',
     },
   ];
 }

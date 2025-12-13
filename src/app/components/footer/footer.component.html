@@ -11,7 +11,11 @@
           [attr.aria-label]="link.label"
         >
           <svg>
-            <use [attr.href]="link.icon"></use>
+            <use
+              [attr.href]="link.icon"
+              [attr.xlink:href]="link.icon"
+              [attr.href.baseVal]="link.icon"
+            ></use>
           </svg>
           <span>{{ link.label }}</span>
         </a>

@@ -81,8 +81,7 @@ nav a {
 /* Default Page Background (matches My Projects) */
 ion-app,
 ion-content {
-  --background:
-    radial-gradient(
+  --background: radial-gradient(
       circle at 10% 10%,
       rgb(var(--accent-ice-rgb), 0.06),
       transparent 25%
