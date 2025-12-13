@@ -172,7 +172,9 @@ body {
   width: 3.6rem;
   height: auto;
   display: block;
-  color: rgb(var(--accent-gold-rgb)); // explicit color so Safari resolves currentColor
+  color: rgb(
+    var(--accent-gold-rgb)
+  ); // explicit color so Safari resolves currentColor
   fill: currentColor;
   stroke: currentColor;
   scale: 1;
@@ -259,6 +261,7 @@ body {
 
   .logo-link {
     width: 3.4rem;
+    transform: translate(8%, 8%);
   }
 
   .side-menu-container {
