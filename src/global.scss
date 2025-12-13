@@ -106,14 +106,6 @@ ion-content {
     --background: var(--color-night) !important;
   }
 
-  .hero__title,
-  .page-center h1,
-  [style*="mix-blend-mode"],
-  .mix-blend {
-    mix-blend-mode: normal !important;
-    color: var(--text-primary) !important;
-  }
-
   img,
   svg {
     background-color: transparent !important;

@@ -11,12 +11,29 @@
 .page-center h1 {
   margin: 0;
   font-size: 4rem;
-  mix-blend-mode: difference;
   text-transform: uppercase;
+  background: linear-gradient(
+    200deg,
+    #fff9da 0%,
+    #ffe28e 20%,
+    #d8a53b 45%,
+    #fff2b9 58%,
+    #b37618 80%,
+    #ffe7a3 100%
+  );
+  text-shadow: -1px 0px 9px #0c2f17;
+
+  filter: drop-shadow(0 0 5px rgba(255, 214, 120, 0.45))
+    drop-shadow(0 0 10px rgba(255, 214, 120, 0.18));
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .home-content {
-  background: var(--color-night);
+  position: relative;
 }
 
 .home-content app-bg-grid {
@@ -31,12 +48,6 @@
 }
 
 /* Firefox fallback: disable blend-mode to prevent black text when background fails */
-@-moz-document url-prefix() {
-  .page-center h1 {
-    mix-blend-mode: normal;
-    color: var(--text-primary);
-  }
-}
 
 @media (width <= 600px) {
   .page-center {

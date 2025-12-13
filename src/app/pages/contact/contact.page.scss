@@ -1,6 +1,7 @@
 section {
   position: relative;
   z-index: 1;
+  color: rgb(252, 241, 179);
 }
 
 .contact-hero {
@@ -52,11 +53,7 @@ section {
 }
 
 .contact-card {
-  background: linear-gradient(
-    150deg,
-    rgb(17 16 13 / 86%),
-    rgb(11 10 7 / 94%)
-  );
+  background: linear-gradient(150deg, rgb(17 16 13 / 86%), rgb(11 10 7 / 94%));
   border: 1px solid var(--border-soft);
   border-radius: 18px;
   padding: 20px 22px;
@@ -124,9 +121,7 @@ section {
   color: var(--text-primary);
   font-size: 15px;
   outline: none;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-field textarea {
@@ -153,9 +148,7 @@ section {
   color: var(--color-night);
   font-weight: 700;
   cursor: pointer;
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
 .send-btn:hover {
@@ -179,11 +172,7 @@ section {
 }
 
 .side-card {
-  background: linear-gradient(
-    160deg,
-    rgb(19 17 12 / 92%),
-    rgb(13 12 9 / 94%)
-  );
+  background: linear-gradient(160deg, rgb(19 17 12 / 92%), rgb(13 12 9 / 94%));
   border: 1px solid var(--border-mid);
   border-radius: 18px;
   padding: 18px 20px;
@@ -217,9 +206,7 @@ section {
   text-decoration: none;
   font-weight: 600;
   width: fit-content;
-  transition:
-    background 0.2s ease,
-    transform 0.15s ease;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .ghost-btn:hover {
