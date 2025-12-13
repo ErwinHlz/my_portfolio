@@ -10,20 +10,20 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
+@import url("@ionic/angular/css/core.css");
 
 /* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
+@import url("@ionic/angular/css/normalize.css");
+@import url("@ionic/angular/css/structure.css");
+@import url("@ionic/angular/css/typography.css");
+@import url("@ionic/angular/css/display.css");
 
 /* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
+@import url("@ionic/angular/css/padding.css");
+@import url("@ionic/angular/css/float-elements.css");
+@import url("@ionic/angular/css/text-alignment.css");
+@import url("@ionic/angular/css/text-transformation.css");
+@import url("@ionic/angular/css/flex-utils.css");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&family=UnifrakturCook:wght@700&display=swap");
 
 /**
@@ -34,13 +34,15 @@
  */
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
+
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+@import url("@ionic/angular/css/palettes/dark.system.css");
 
 ion-header,
 ion-toolbar {
   --background: transparent !important;
   --ion-color-base: transparent !important;
+
   box-shadow: none !important;
   border-bottom: none !important;
 }
@@ -82,14 +84,15 @@ ion-content {
   --background:
     radial-gradient(
       circle at 10% 10%,
-      rgba(var(--accent-ice-rgb), 0.06),
+      rgb(var(--accent-ice-rgb), 0.06),
       transparent 25%
     ),
     radial-gradient(
       circle at 90% 20%,
-      rgba(var(--accent-gold-rgb), 0.08),
+      rgb(var(--accent-gold-rgb), 0.08),
       transparent 30%
     ),
     var(--color-night);
+
   color: var(--text-primary);
 }

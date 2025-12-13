@@ -20,7 +20,7 @@ section {
   padding: 6px 12px;
   border-radius: 999px;
   border: 1px solid var(--border-strong);
-  background: rgba(var(--accent-gold-rgb), 0.08);
+  background: rgb(var(--accent-gold-rgb), 0.08);
   color: var(--accent-gold);
   font-size: 12px;
   letter-spacing: 0.12em;
@@ -54,8 +54,8 @@ section {
 .contact-card {
   background: linear-gradient(
     150deg,
-    rgba(17, 16, 13, 0.86),
-    rgba(11, 10, 7, 0.94)
+    rgb(17 16 13 / 86%),
+    rgb(11 10 7 / 94%)
   );
   border: 1px solid var(--border-soft);
   border-radius: 18px;
@@ -117,10 +117,10 @@ section {
 .form-field input,
 .form-field textarea {
   width: 100%;
-  padding: 12px 12px;
+  padding: 12px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgb(255 255 255 / 8%);
+  background: rgb(255 255 255 / 3%);
   color: var(--text-primary);
   font-size: 15px;
   outline: none;
@@ -137,18 +137,18 @@ section {
 .form-field input:focus,
 .form-field textarea:focus {
   border-color: var(--border-strong);
-  box-shadow: 0 0 0 3px rgba(var(--accent-gold-rgb), 0.18);
+  box-shadow: 0 0 0 3px rgb(var(--accent-gold-rgb), 0.18);
 }
 
 .send-btn {
   align-self: start;
   padding: 12px 16px;
   border-radius: 14px;
-  border: 1px solid rgba(var(--accent-gold-rgb), 0.6);
+  border: 1px solid rgb(var(--accent-gold-rgb), 0.6);
   background: linear-gradient(
     120deg,
     var(--accent-gold),
-    color-mix(in srgb, var(--accent-forest) 80%, #ffffff 20%)
+    color-mix(in srgb, var(--accent-forest) 80%, #fff 20%)
   );
   color: var(--color-night);
   font-weight: 700;
@@ -160,7 +160,7 @@ section {
 
 .send-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 35%);
 }
 
 .send-btn:active {
@@ -181,8 +181,8 @@ section {
 .side-card {
   background: linear-gradient(
     160deg,
-    rgba(19, 17, 12, 0.92),
-    rgba(13, 12, 9, 0.94)
+    rgb(19 17 12 / 92%),
+    rgb(13 12 9 / 94%)
   );
   border: 1px solid var(--border-mid);
   border-radius: 18px;
@@ -223,7 +223,7 @@ section {
 }
 
 .ghost-btn:hover {
-  background: rgba(var(--accent-gold-rgb), 0.12);
+  background: rgb(var(--accent-gold-rgb), 0.12);
   transform: translateY(-1px);
 }
 
@@ -239,7 +239,7 @@ section {
   max-width: 1100px;
   margin: 10px auto 90px;
   padding: 24px;
-  background: rgba(11, 10, 7, 0.92);
+  background: rgb(11 10 7 / 92%);
   border: 1px solid var(--border-soft);
   border-radius: 18px;
   box-shadow: var(--shadow-strong);
@@ -257,7 +257,7 @@ section {
   max-width: 720px;
 }
 
-@media (max-width: 900px) {
+@media (width <= 900px) {
   .contact-grid {
     grid-template-columns: 1fr;
     justify-items: stretch;
@@ -274,7 +274,7 @@ section {
   }
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .contact-hero h1 {
     font-size: 1.9rem;
   }

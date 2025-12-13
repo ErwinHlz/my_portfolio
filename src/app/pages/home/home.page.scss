@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center; // vertikal zentriert
-  justify-content: center; // horizontal zentriert
+  justify-content: center;
   pointer-events: none;
 }
 
@@ -13,7 +13,7 @@
   text-transform: uppercase;
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .page-center {
     padding: 0 14px;
     text-align: center;

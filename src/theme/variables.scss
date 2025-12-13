@@ -5,18 +5,13 @@
   --color-stone: #19160f;
   --surface-shadow: #0d0f0b;
   --color-ink: #1a1e2e;
-
   --accent-gold: #d6b35c;
   --accent-gold-rgb: 214, 179, 92;
-
   --accent-forest: #2f6b3c;
   --accent-forest-rgb: 47, 107, 60;
-
   --accent-ember: #b44b2a;
-
   --accent-ice: #9ad0ff;
   --accent-ice-rgb: 154, 208, 255;
-
   --surface-parchment: #e9dfc4;
   --text-primary: #f4efe3;
   --text-muted: #cfc6b0;
@@ -24,16 +19,20 @@
   --text-soft: #dcd6c5;
   --accent-mint: #a4fff4;
   --accent-mint-rgb: 164, 255, 244;
+  --shadow-strong: 0 16px 40px rgb(0 0 0 / 45%);
+  --border-soft: rgb(var(--accent-gold-rgb), 0.14);
+  --border-mid: rgb(var(--accent-gold-rgb), 0.22);
+  --border-strong: rgb(var(--accent-gold-rgb), 0.4);
 
-  --shadow-strong: 0 16px 40px rgba(0, 0, 0, 0.45);
-  --border-soft: rgba(var(--accent-gold-rgb), 0.14);
-  --border-mid: rgba(var(--accent-gold-rgb), 0.22);
-  --border-strong: rgba(var(--accent-gold-rgb), 0.4);
+  --paper-1: #f3ead7;
+  --paper-2: #eadbbf;
+  --paper-3: #e2d1b2;
+  --ink: #14120f;
 
   /* Typografie */
-  --font-display: "Cinzel", "EB Garamond", Georgia, serif;
-  --font-body: "Cormorant Garamond", "EB Garamond", Georgia, serif;
-  --font-accent: "UnifrakturCook", "Cinzel", Georgia, serif;
+  --font-display: "Cinzel", "EB Garamond", georgia, serif;
+  --font-body: "Cormorant Garamond", "EB Garamond", georgia, serif;
+  --font-accent: "UnifrakturCook", "Cinzel", georgia, serif;
 
   /* Ionic Farbzuordnung */
   --ion-color-primary: var(--accent-gold);
@@ -42,35 +41,30 @@
   --ion-color-primary-contrast-rgb: 10, 10, 10;
   --ion-color-primary-shade: #bf9d51;
   --ion-color-primary-tint: #dfbe73;
-
   --ion-color-secondary: var(--accent-forest);
   --ion-color-secondary-rgb: var(--accent-forest-rgb);
   --ion-color-secondary-contrast: var(--text-primary);
   --ion-color-secondary-contrast-rgb: 244, 239, 227;
   --ion-color-secondary-shade: #295e35;
   --ion-color-secondary-tint: #3e7a4f;
-
   --ion-color-tertiary: var(--accent-ice);
   --ion-color-tertiary-rgb: var(--accent-ice-rgb);
   --ion-color-tertiary-contrast: #0a0a0a;
   --ion-color-tertiary-contrast-rgb: 10, 10, 10;
   --ion-color-tertiary-shade: #86b8e0;
   --ion-color-tertiary-tint: #a4d8ff;
-
   --ion-color-dark: var(--color-night);
   --ion-color-dark-rgb: 11, 10, 7;
   --ion-color-dark-contrast: var(--text-primary);
   --ion-color-dark-contrast-rgb: 244, 239, 227;
   --ion-color-dark-shade: #0a0906;
   --ion-color-dark-tint: #26231d;
-
   --ion-color-medium: var(--text-muted);
   --ion-color-medium-rgb: 207, 198, 176;
   --ion-color-medium-contrast: #0a0a0a;
   --ion-color-medium-contrast-rgb: 10, 10, 10;
   --ion-color-medium-shade: #b9af9a;
   --ion-color-medium-tint: #d7cfbd;
-
   --ion-color-light: var(--surface-parchment);
   --ion-color-light-rgb: 233, 223, 196;
   --ion-color-light-contrast: #0a0a0a;

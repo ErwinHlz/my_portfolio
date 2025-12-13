@@ -13,7 +13,7 @@
   flex-direction: column;
   gap: 10px;
   z-index: 40;
-  box-shadow: inset 0px -30px 30px -10px rgba(var(--accent-gold-rgb), 0.12);
+  box-shadow: inset 0 -30px 30px -10px rgb(var(--accent-gold-rgb), 0.12);
 }
 
 .copyright-wrapper {
@@ -25,11 +25,11 @@
   height: 42px;
   border-radius: 12px;
   background:
-    radial-gradient(circle at 30% 30%, rgba(0, 208, 196, 0.2), transparent),
-    rgba(255, 255, 255, 0.06);
+    radial-gradient(circle at 30% 30%, rgb(0 208 196 / 20%), transparent),
+    rgb(255 255 255 / 6%);
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.12),
-    0 12px 32px rgba(0, 0, 0, 0.4);
+    0 0 0 1px rgb(255 255 255 / 12%),
+    0 12px 32px rgb(0 0 0 / 40%);
   padding: 6px;
 }
 
@@ -41,7 +41,7 @@
 
 .footer__copy {
   margin: 2px 0 0;
-  color: rgba(232, 245, 244, 0.75);
+  color: rgb(232 245 244 / 75%);
   font-size: 0.8rem;
 }
 
@@ -55,7 +55,7 @@
   text-transform: uppercase;
   font-size: 0.8rem;
   letter-spacing: 0.12em;
-  color: rgba(232, 245, 244, 0.7);
+  color: rgb(232 245 244 / 70%);
 }
 
 .footer__links {
@@ -70,10 +70,10 @@
   gap: 10px;
   padding: 6px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgb(255 255 255 / 8%);
   color: var(--text-primary);
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgb(255 255 255 / 4%);
   transition:
     transform 160ms ease,
     border-color 160ms ease,
@@ -81,7 +81,7 @@
 }
 
 .footer__link:hover {
-  border-color: rgba(var(--accent-gold-rgb), 0.4);
+  border-color: rgb(var(--accent-gold-rgb), 0.4);
   color: var(--accent-gold);
   transform: translateY(-2px);
 
@@ -96,7 +96,7 @@
   fill: var(--text-primary);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .site-footer {
     flex-direction: column;
     align-items: center;

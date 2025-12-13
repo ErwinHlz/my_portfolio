@@ -8,7 +8,7 @@ app-footer {
   padding-bottom: 90px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   #content-wrapper {
     padding-bottom: 110px;
   }

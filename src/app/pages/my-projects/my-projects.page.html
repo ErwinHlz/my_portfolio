@@ -37,8 +37,33 @@
     </button>
   </section>
 
+  <section class="detail-switcher" aria-label="Bereich wechseln">
+    <button
+      type="button"
+      class="switcher__btn"
+      [class.detail__btn--active]="detailView === 'overview'"
+      [class.switcher__btn--active]="detailView === 'overview'"
+      (click)="setDetailView('overview')"
+    >
+      Projektinfo
+    </button>
+    <button
+      type="button"
+      class="switcher__btn"
+      [class.switcher__btn--active]="detailView === 'insights'"
+      [class.detail__btn--active]="detailView === 'insights'"
+      [disabled]="!activeProject?.previews?.length"
+      (click)="setDetailView('insights')"
+    >
+      Einblicke
+    </button>
+  </section>
+
   <section class="project-stage" *ngIf="activeProject">
-    <div class="stage-left">
+    <div
+      class="stage-left"
+      [class.stage--mobile-hidden]="detailView === 'insights'"
+    >
       <div class="section__header">
         <p class="section__eyebrow">
           {{ selectedView === 'current' ? 'Aktuell' : 'Bisher' }}
@@ -74,6 +99,14 @@
           >{{ activeProject.progress }}% fertig</span
         >
       </div>
+      <button
+        type="button"
+        class="nav-btn nav-btn--ghost mobile-insights-btn"
+        *ngIf="activeProject.previews?.length"
+        (click)="setDetailView('insights')"
+      >
+        Einblicke öffnen
+      </button>
       <div class="stage-nav">
         <button
           type="button"
@@ -97,7 +130,11 @@
       </div>
     </div>
 
-    <div class="stage-right" *ngIf="activeProject.previews?.length">
+    <div
+      class="stage-right"
+      *ngIf="activeProject.previews?.length"
+      [class.stage--mobile-hidden]="detailView === 'overview'"
+    >
       <div
         class="book"
         [style.--accent]="activeProject.accent || 'var(--accent-gold)'"
@@ -160,6 +197,28 @@
             Seite vor ▶
           </button>
         </div>
+      </div>
+      <div class="stage-nav stage-nav--preview--mobile">
+        <button
+          type="button"
+          class="nav-btn"
+          (click)="prevPreview()"
+          [disabled]="activePreviewIndex === 0"
+        >
+          ◀ Seite zurück
+        </button>
+        <span class="stage-nav__pos"
+          >{{ activePreviewIndex + 1 }} / {{ activeProject.previews.length
+          }}</span
+        >
+        <button
+          type="button"
+          class="nav-btn"
+          (click)="nextPreview()"
+          [disabled]="activePreviewIndex === activeProject.previews.length - 1"
+        >
+          Seite vor ▶
+        </button>
       </div>
     </div>
   </section>

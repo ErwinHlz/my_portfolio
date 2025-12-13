@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -12,6 +12,7 @@ import { IonicModule } from '@ionic/angular';
 })
 export class MyProjectsPage implements OnDestroy {
   selectedView: 'current' | 'past' = 'current';
+  detailView: 'overview' | 'insights' = 'overview';
   activeProjectIndex = 0;
   activePreviewIndex = 0;
   showVideo = false;
@@ -144,6 +145,16 @@ export class MyProjectsPage implements OnDestroy {
     this.selectedView = view;
     this.activeProjectIndex = 0;
     this.activePreviewIndex = 0;
+    this.detailView = 'overview';
+  }
+
+  setDetailView(view: 'overview' | 'insights') {
+    if (view === 'insights' && !this.activeProject?.previews?.length) {
+      this.detailView = 'overview';
+      return;
+    }
+
+    this.detailView = view;
   }
 
   nextProject() {

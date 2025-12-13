@@ -37,12 +37,12 @@
   padding: 12px;
   background: linear-gradient(
     180deg,
-    rgba(var(--accent-gold-rgb), 0.18),
-    rgba(var(--accent-forest-rgb), 0.12)
+    rgb(var(--accent-gold-rgb), 0.18),
+    rgb(var(--accent-forest-rgb), 0.12)
   );
   border-radius: 12px;
-  border: 1px solid rgba(var(--accent-gold-rgb), 0.1);
-  box-shadow: inset 0 1px 0 rgba(var(--accent-gold-rgb), 0.08);
+  border: 1px solid rgb(var(--accent-gold-rgb), 0.1);
+  box-shadow: inset 0 1px 0 rgb(var(--accent-gold-rgb), 0.08);
   position: relative;
 }
 
@@ -60,11 +60,11 @@
   height: 2px;
   background: linear-gradient(
     90deg,
-    rgba(var(--accent-gold-rgb), 0.2),
-    rgba(var(--accent-gold-rgb), 0.75),
-    rgba(var(--accent-gold-rgb), 0.2)
+    rgb(var(--accent-gold-rgb), 0.2),
+    rgb(var(--accent-gold-rgb), 0.75),
+    rgb(var(--accent-gold-rgb), 0.2)
   );
-  box-shadow: 0 0 8px rgba(var(--accent-gold-rgb), 0.35);
+  box-shadow: 0 0 8px rgb(var(--accent-gold-rgb), 0.35);
 }
 
 .quarter-tick {
@@ -72,7 +72,7 @@
   top: 92px;
   width: 1px;
   height: 18px;
-  background: rgba(var(--accent-gold-rgb), 0.55);
+  background: rgb(var(--accent-gold-rgb), 0.55);
   transform: translateX(-50%);
 }
 
@@ -88,11 +88,11 @@
 }
 
 .year-tick span {
-  background: rgba(18, 24, 18, 0.82);
+  background: rgb(18 24 18 / 82%);
   padding: 2px 6px;
   border-radius: 6px;
-  border: 1px solid rgba(var(--accent-gold-rgb), 0.35);
-  box-shadow: inset 0 1px 0 rgba(var(--accent-gold-rgb), 0.16);
+  border: 1px solid rgb(var(--accent-gold-rgb), 0.35);
+  box-shadow: inset 0 1px 0 rgb(var(--accent-gold-rgb), 0.16);
 }
 
 .event-bar {
@@ -105,8 +105,8 @@
   );
   border-radius: 10px;
   box-shadow:
-    0 8px 16px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(231, 217, 182, 0.12);
+    0 8px 16px rgb(0 0 0 / 45%),
+    0 0 0 1px rgb(231 217 182 / 12%);
   display: grid;
   align-items: center;
   padding: 0 10px;
@@ -129,12 +129,12 @@
   border-radius: 50%;
   border: 2px solid color-mix(in srgb, var(--accent) 80%, var(--accent-gold));
   box-shadow:
-    0 0 0 2px rgba(0, 0, 0, 0.35),
+    0 0 0 2px rgb(0 0 0 / 35%),
     0 0 10px color-mix(in srgb, var(--accent) 50%, transparent);
   background: radial-gradient(
     circle at 35% 35%,
     color-mix(in srgb, var(--accent) 80%, #ffd780),
-    rgba(48, 36, 18, 0.95)
+    rgb(48 36 18 / 95%)
   );
 }
 
@@ -160,12 +160,12 @@
   border-radius: 20%;
   border: 2px solid color-mix(in srgb, var(--accent) 80%, var(--accent-gold));
   box-shadow:
-    0 0 0 2px rgba(0, 0, 0, 0.35),
+    0 0 0 2px rgb(0 0 0 / 35%),
     0 0 10px color-mix(in srgb, var(--accent) 50%, transparent);
   background: radial-gradient(
     circle at 65% 65%,
     color-mix(in srgb, var(--accent) 80%, #ffd780),
-    rgba(48, 36, 18, 0.95)
+    rgb(48 36 18 / 95%)
   );
   pointer-events: none;
 }
@@ -211,20 +211,20 @@
 }
 
 .legend-dot--start {
-  border: 2px solid rgba(199, 174, 106, 0.85);
+  border: 2px solid rgb(199 174 106 / 85%);
   background: radial-gradient(
     circle at 35% 35%,
-    rgba(255, 215, 128, 0.85),
-    rgba(48, 36, 18, 0.95)
+    rgb(255 215 128 / 85%),
+    rgb(48 36 18 / 95%)
   );
 }
 
 .legend-rect--end {
-  border: 2px solid rgba(199, 174, 106, 0.85);
+  border: 2px solid rgb(199 174 106 / 85%);
   background: radial-gradient(
     circle at 65% 65%,
-    rgba(255, 215, 128, 0.85),
-    rgba(48, 36, 18, 0.95)
+    rgb(255 215 128 / 85%),
+    rgb(48 36 18 / 95%)
   );
 }
 
@@ -258,7 +258,7 @@
   height: 10px;
   background: var(--accent);
   transform: translateY(-50%) rotate(45deg);
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0 2px rgb(0 0 0 / 25%);
 }
 
 .event-bar__cap--start {
@@ -276,10 +276,10 @@
   min-width: 180px;
   background: var(--surface-shadow);
   color: var(--surface-parchment);
-  border: 1px solid rgba(var(--accent-gold-rgb), 0.35);
+  border: 1px solid rgb(var(--accent-gold-rgb), 0.35);
   border-radius: 10px;
   padding: 10px 12px;
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 30px rgb(0 0 0 / 35%);
   opacity: 0;
   pointer-events: none;
   transition:
@@ -296,8 +296,8 @@
   width: 10px;
   height: 10px;
   background: var(--surface-shadow);
-  border-left: 1px solid rgba(var(--accent-gold-rgb), 0.35);
-  border-bottom: 1px solid rgba(var(--accent-gold-rgb), 0.35);
+  border-left: 1px solid rgb(var(--accent-gold-rgb), 0.35);
+  border-bottom: 1px solid rgb(var(--accent-gold-rgb), 0.35);
   transform-origin: center;
   rotate: 45deg;
   margin-top: -5px;
@@ -305,7 +305,7 @@
 
 .event-bar:hover {
   transform: translateY(2px);
-  box-shadow: 0px 0px 22px rgba(var(--accent-gold-rgb), 0.45);
+  box-shadow: 0 0 22px rgb(var(--accent-gold-rgb), 0.45);
 }
 
 .event-bar:hover .event-pop {
@@ -351,7 +351,7 @@
   line-height: 1.2;
 }
 
-@media (max-width: 720px) {
+@media (width <= 720px) {
   .timeline-head h2 {
     font-size: 18px;
   }
@@ -393,10 +393,7 @@
   }
 
   .timeline-legend {
-    top: 50%;
-    left: 2%;
-    right: auto;
-    bottom: 8px;
+    inset: 50% auto 8px 2%;
     transform: translateX(-50%) rotate(-90deg);
     gap: 5px;
     font-size: 10px;
@@ -406,6 +403,7 @@
     from {
       transform: rotate(-90deg);
     }
+
     to {
       transform: rotate(0deg);
     }
