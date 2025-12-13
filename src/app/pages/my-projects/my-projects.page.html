@@ -139,18 +139,12 @@
         class="book"
         [style.--accent]="activeProject.accent || 'var(--accent-gold)'"
       >
-        <svg
+        <object
           class="book__bg"
-          viewBox="0 0 968.41 785.17"
+          type="image/svg+xml"
+          data="assets/opticals/buch.svg"
           aria-hidden="true"
-          focusable="false"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-        >
-          <use
-            href="assets/opticals/buch.svg#book-illustration"
-            xlink:href="assets/opticals/buch.svg#book-illustration"
-          ></use>
-        </svg>
+        ></object>
         <div class="page page--left">
           <span class="preview__label">
             Einblick {{ activePreviewIndex + 1 }} / {{
