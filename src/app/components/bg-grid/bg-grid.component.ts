@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { PanDragDirective } from './pan-drag.directive';
 
 @Component({
@@ -12,6 +12,7 @@ import { PanDragDirective } from './pan-drag.directive';
 export class BgGridComponent implements OnInit {
   // per default drag-bar. kann mit [interactive]="false" abgeschaltet werden
   @Input() interactive = true;
+  @HostBinding('class.is-safari') isSafari = false;
 
   images = [
     'assets/background/me_anzug.jpeg',
@@ -31,7 +32,7 @@ export class BgGridComponent implements OnInit {
   worldX = 0;
   worldY = 0;
   grids = Array.from({ length: 9 }, (_, i) => i);
-  tiles = Array.from({ length: this.cols * this.rows }, (_, i) => i);
+  tiles: number[] = [];
 
   rowPatterns = [
     [0, 1, 2, 3],
@@ -41,23 +42,42 @@ export class BgGridComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.isSafari = this.detectSafari();
     this.configureForViewport();
   }
 
-  private configureForViewport() {
-    const width = window.innerWidth;
+  private detectSafari(): boolean {
+    if (typeof navigator === 'undefined') return false;
+    const ua = navigator.userAgent;
+    return /Safari/i.test(ua) && !/Chrome|CriOS|Android|Edg/i.test(ua);
+  }
 
-    if (width <= 1024) {
-      this.tileSize = 150;
-      this.tileGap = 120;
-      this.dragMultiplier = 2.5;
+  private configureForViewport() {
+    const width = typeof window !== 'undefined' ? window.innerWidth : 1920;
+    const isSmall = width <= 1024;
+
+    if (this.isSafari) {
+      this.cols = 12;
+      this.rows = 8;
+      this.tileSize = isSmall ? 140 : 260;
+      this.tileGap = isSmall ? 100 : 180;
+      this.dragMultiplier = isSmall ? 2.2 : 1.1;
     } else {
-      this.tileSize = 300;
-      this.tileGap = 300;
-      this.dragMultiplier = 1.2;
+      this.cols = 16;
+      this.rows = 10;
+      if (isSmall) {
+        this.tileSize = 150;
+        this.tileGap = 120;
+        this.dragMultiplier = 2.5;
+      } else {
+        this.tileSize = 300;
+        this.tileGap = 300;
+        this.dragMultiplier = 1.2;
+      }
     }
 
     this.step = this.tileSize + this.tileGap;
+    this.tiles = Array.from({ length: this.cols * this.rows }, (_, i) => i);
   }
 
   onPanDelta(e: { dx: number; dy: number }) {

@@ -29,7 +29,7 @@
   background-size: cover;
   background-position: center;
   filter: drop-shadow(-15px -15px 10px rgb(75 68 49));
-  will-change: transform, background-image;
+  will-change: transform;
 }
 
 [appPanDrag] .bg-inner {
@@ -46,4 +46,14 @@
   .bg-tile {
     filter: drop-shadow(-10px -10px 5px rgb(75 68 49));
   }
+}
+
+:host(.is-safari) .bg-root {
+  width: 140vw;
+  height: 140vh;
+}
+
+:host(.is-safari) .bg-tile {
+  filter: none;
+  will-change: auto;
 }
