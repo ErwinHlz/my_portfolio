@@ -24,12 +24,13 @@
   width: 42px;
   height: 42px;
   border-radius: 12px;
-  background:
-    radial-gradient(circle at 30% 30%, rgb(0 208 196 / 20%), transparent),
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgb(0 208 196 / 20%),
+      transparent
+    ),
     rgb(255 255 255 / 6%);
-  box-shadow:
-    0 0 0 1px rgb(255 255 255 / 12%),
-    0 12px 32px rgb(0 0 0 / 40%);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 12%), 0 12px 32px rgb(0 0 0 / 40%);
   padding: 6px;
 }
 
@@ -74,10 +75,7 @@
   color: var(--text-primary);
   text-decoration: none;
   background: rgb(255 255 255 / 4%);
-  transition:
-    transform 160ms ease,
-    border-color 160ms ease,
-    color 160ms ease;
+  transition: transform 160ms ease, border-color 160ms ease, color 160ms ease;
 }
 
 .footer__link:hover {

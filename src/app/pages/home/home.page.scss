@@ -4,6 +4,8 @@
   align-items: center; // vertikal zentriert
   justify-content: center;
   pointer-events: none;
+  position: relative;
+  z-index: 1;
 }
 
 .page-center h1 {
@@ -13,9 +15,27 @@
   text-transform: uppercase;
 }
 
+.home-content {
+  background: var(--color-night);
+}
+
+.home-content app-bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
 .home-content::part(scroll) {
   overflow-y: hidden;
   overscroll-behavior-y: contain;
+}
+
+/* Firefox fallback: disable blend-mode to prevent black text when background fails */
+@-moz-document url-prefix() {
+  .page-center h1 {
+    mix-blend-mode: normal;
+    color: var(--text-primary);
+  }
 }
 
 @media (width <= 600px) {
