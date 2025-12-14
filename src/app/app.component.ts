@@ -22,7 +22,12 @@ export class AppComponent implements OnInit {
     this.updateFooterMode(this.router.url);
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
-      .subscribe((e) => this.updateFooterMode(e.urlAfterRedirects));
+      .subscribe((e) => {
+        this.updateFooterMode(e.urlAfterRedirects);
+        if (typeof window !== 'undefined') {
+          window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+      });
   }
 
   private updateFooterMode(url: string) {
