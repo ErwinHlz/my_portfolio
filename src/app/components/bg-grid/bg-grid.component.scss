@@ -15,6 +15,7 @@
   will-change: transform;
   transform-origin: center;
   pointer-events: none;
+  touch-action: none; /* allow smooth dragging on touch devices */
 }
 
 .bg-root.is-interactive {

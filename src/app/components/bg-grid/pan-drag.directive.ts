@@ -40,6 +40,7 @@ export class PanDragDirective implements OnDestroy {
   constructor() {
     this.renderer.setStyle(this.element.nativeElement, 'position', 'relative');
     this.renderer.setStyle(this.element.nativeElement, 'cursor', 'grab');
+    this.renderer.setStyle(this.element.nativeElement, 'touch-action', 'none');
   }
 
   private startMomentum() {
