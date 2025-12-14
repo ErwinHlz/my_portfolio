@@ -58,6 +58,17 @@ body {
   color: var(--text-primary);
 }
 
+ion-app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#content-wrapper {
+  flex: 1 0 auto;
+  min-height: 0;
+}
+
 a {
   color: var(--accent-gold);
 }
