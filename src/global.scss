@@ -51,12 +51,22 @@ ion-toolbar {
   color: var(--text-primary);
   background-color: var(--color-night);
   font-family: var(--font-body);
-  --footer-offset: 120px;
 }
 
 body {
   background: var(--color-night);
   color: var(--text-primary);
+}
+
+ion-app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#content-wrapper {
+  flex: 1 0 auto;
+  min-height: 0;
 }
 
 a {
@@ -111,10 +121,4 @@ ion-content {
   svg {
     background-color: transparent !important;
   }
-}
-
-/* Global bottom safe area so fixed footer doesn't cover content */
-ion-content::part(scroll),
-body {
-  padding-bottom: calc(var(--footer-offset) + env(safe-area-inset-bottom, 0px));
 }

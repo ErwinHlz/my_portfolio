@@ -6,7 +6,7 @@
   width: 100%;
   padding: 12px 18px;
   color: var(--text-primary);
-  background: transparent;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,11 +100,22 @@
     align-items: center;
     padding: 18px 16px;
     gap: 10px;
+    background: radial-gradient(
+      ellipse at 40% 30%,
+      #06130b 0%,
+      #020a06 55%,
+      #020b06 80%,
+      #000402 100%
+    );
+    box-shadow: 0px 0px 20px 0.01px #fceda856;
+    height: 10vh;
   }
 
   .footer__links {
     flex-wrap: wrap;
     justify-content: center;
+    scale: 0.7;
+    transform: translateY(30%);
   }
 
   .footer__link {
