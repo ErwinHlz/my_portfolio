@@ -291,6 +291,13 @@ section {
   }
 }
 
+/* Hide global footer on projects page for mobile */
+@media (width <= 768px) {
+  :host ::ng-deep app-footer {
+    display: none !important;
+  }
+}
+
 .page {
   height: 100%;
   min-height: 0;
