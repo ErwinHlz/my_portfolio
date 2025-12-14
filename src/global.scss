@@ -107,11 +107,6 @@ ion-content {
   color: var(--text-primary);
 }
 
-/* Leave room for the fixed footer */
-ion-content::part(scroll) {
-  padding-bottom: 140px;
-}
-
 /* Firefox fallback: force solid backgrounds and disable blend modes that can invert text */
 @-moz-document url-prefix() {
   body,
