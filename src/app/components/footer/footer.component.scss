@@ -1,6 +1,6 @@
 .site-footer {
   position: sticky;
-  bottom: 0px;
+  bottom: env(safe-area-inset-bottom, 0px);
   width: 100%;
   padding: 12px 18px calc(12px + env(safe-area-inset-bottom, 0px));
   min-height: 64px;
