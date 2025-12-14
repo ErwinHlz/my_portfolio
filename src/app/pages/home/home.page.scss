@@ -59,21 +59,3 @@
     font-size: 2.6rem;
   }
 }
-
-/* Mobile: Footer auf Startseite fix und transparent lassen */
-@media (width <= 768px) {
-  :host ::ng-deep app-footer .site-footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: env(safe-area-inset-bottom, 0px);
-    background: transparent;
-    box-shadow: none;
-    padding: 12px 18px calc(12px + env(safe-area-inset-bottom, 0px));
-  }
-
-  /* etwas Platz für den fixen Footer */
-  :host ::ng-deep #content-wrapper {
-    padding-bottom: 140px;
-  }
-}

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
+  @Input() mode: 'fixed' | 'inline' = 'fixed';
+  @HostBinding('class.is-fixed') get isFixed() {
+    return this.mode === 'fixed';
+  }
+  @HostBinding('class.is-inline') get isInline() {
+    return this.mode === 'inline';
+  }
+
   readonly currentYear = new Date().getFullYear();
 
   readonly socialLinks = [

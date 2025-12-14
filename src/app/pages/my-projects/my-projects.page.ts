@@ -2,13 +2,14 @@ import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 @Component({
   selector: 'app-my-projects',
   templateUrl: './my-projects.page.html',
   styleUrls: ['./my-projects.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule, FormsModule],
+  imports: [CommonModule, IonicModule, FormsModule, FooterComponent],
 })
 export class MyProjectsPage implements OnDestroy {
   selectedView: 'current' | 'past' = 'current';

@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent } from '@ionic/angular/standalone';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.page.html',
   styleUrls: ['./contact.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule],
+  imports: [IonContent, CommonModule, FormsModule, FooterComponent],
 })
 export class ContactPage {
   readonly contactEmail = 'erwinholzhauser.eh@gmail.com';

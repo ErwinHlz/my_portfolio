@@ -11,13 +11,14 @@ import { IonicModule } from '@ionic/angular';
 import { TimelineComponent } from '../../components/timeline/timeline.component';
 import { Skill } from '../../models/skill.model';
 import { SkillsService } from '../../services/skills.service';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.page.html',
   styleUrls: ['./about.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, TimelineComponent],
+  imports: [IonicModule, CommonModule, TimelineComponent, FooterComponent],
 })
 export class AboutPage implements OnInit {
   @ViewChildren('sec') sections!: QueryList<ElementRef<HTMLElement>>;

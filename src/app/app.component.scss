@@ -2,3 +2,15 @@ app-navbar,
 app-footer {
   z-index: 100;
 }
+
+#content-wrapper {
+  padding-bottom: 0;
+}
+
+#content-wrapper.has-fixed-footer {
+  padding-bottom: 140px;
+}
+
+#content-wrapper.has-inline-footer {
+  min-height: calc(100vh - 140px);
+}

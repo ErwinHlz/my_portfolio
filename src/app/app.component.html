@@ -1,9 +1,12 @@
 <ion-app>
   <app-navbar></app-navbar>
 
-  <div id="content-wrapper">
+  <div
+    id="content-wrapper"
+    [class.has-fixed-footer]="footerMode === 'fixed'"
+    [class.has-inline-footer]="footerMode === 'inline'"
+  >
     <ion-router-outlet></ion-router-outlet>
   </div>
-
-  <app-footer></app-footer>
+  <app-footer [mode]="footerMode"></app-footer>
 </ion-app>
