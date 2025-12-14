@@ -1,5 +1,8 @@
 .site-footer {
-  position: static;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: env(safe-area-inset-bottom, 0);
   width: 100%;
   padding: 12px 18px calc(12px + env(safe-area-inset-bottom, 0px));
   color: var(--text-primary);
