@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 1vh;
+  padding-bottom: env(safe-area-inset-bottom);
   min-height: 64px;
   color: var(--text-primary);
   background: transparent;
