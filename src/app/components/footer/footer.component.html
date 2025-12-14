@@ -10,14 +10,14 @@
           rel="noreferrer noopener"
           [attr.aria-label]="link.label"
         >
-          <svg>
+          <svg class="footer__icon" aria-hidden="true">
             <use
               [attr.href]="link.icon"
               [attr.xlink:href]="link.icon"
               [attr.href.baseVal]="link.icon"
             ></use>
           </svg>
-          <span>{{ link.label }}</span>
+          <span class="footer__label">{{ link.label }}</span>
         </a>
       </div>
     </div>
