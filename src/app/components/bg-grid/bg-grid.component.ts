@@ -68,7 +68,7 @@ export class BgGridComponent implements OnInit {
       if (isSmall) {
         this.tileSize = 100;
         this.tileGap = 120;
-        this.dragMultiplier = 3.5;
+        this.dragMultiplier = 2.5;
       } else {
         this.tileSize = 250;
         this.tileGap = 200;
