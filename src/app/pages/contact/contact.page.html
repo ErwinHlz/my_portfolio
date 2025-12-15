@@ -17,7 +17,7 @@
             type="text"
             name="name"
             [(ngModel)]="form.name"
-            placeholder="Wie darf ich dich ansprechen?"
+            placeholder="Ihr Vor- und Nachname"
             autocomplete="name"
           />
         </label>
@@ -28,7 +28,7 @@
             type="email"
             name="email"
             [(ngModel)]="form.email"
-            placeholder="dein"
+            placeholder="Ihre E-Mail-Adresse"
             autocomplete="email"
           />
         </label>
@@ -39,7 +39,7 @@
             type="text"
             name="subject"
             [(ngModel)]="form.subject"
-            placeholder="Worum geht es?"
+            placeholder="Betreff Ihrer Anfrage"
             autocomplete="off"
             required
           />
@@ -51,7 +51,7 @@
             name="message"
             rows="5"
             [(ngModel)]="form.message"
-            placeholder="Kurz beschreiben, was du vorhast..."
+            placeholder="E-Mail Inhalt"
             required
           ></textarea>
         </label>
