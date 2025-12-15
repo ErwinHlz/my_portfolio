@@ -5,8 +5,8 @@
     id="content-wrapper"
     [class.has-fixed-footer]="footerMode === 'fixed'"
     [class.has-inline-footer]="footerMode === 'inline'"
+    [class.has-mobile-footer]="footerMode === 'mobile'"
   >
     <ion-router-outlet></ion-router-outlet>
   </div>
-  <app-footer [mode]="footerMode"></app-footer>
 </ion-app>

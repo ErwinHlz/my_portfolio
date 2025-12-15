@@ -26,10 +26,19 @@
   background: transparent;
 }
 
+:host(.is-mobile) .site-footer {
+  position: relative;
+  margin-top: 5vh;
+  z-index: 120;
+  background: transparent;
+}
+
 :host(.is-inline) .site-footer {
-  position: sticky;
+  position: fixed;
+  bottom: 0;
   box-shadow: none;
   padding: 12px 18px;
+  z-index: 10;
 }
 
 .copyright-wrapper {
@@ -114,16 +123,6 @@
 }
 
 @media (width <= 768px) {
-  :host(.is-inline) .site-footer {
-    position: static;
-    box-shadow: none;
-    padding: 12px 18px;
-  }
-  .site-footer {
-    margin-top: 5vh;
-    gap: 8px;
-  }
-
   .footer__links {
     flex-wrap: wrap;
     justify-content: center;

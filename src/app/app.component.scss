@@ -4,7 +4,7 @@ app-footer {
 }
 
 #content-wrapper {
-  padding-bottom: 0;
+  flex: 1 0 auto;
 }
 
 #content-wrapper.has-fixed-footer {
@@ -12,5 +12,5 @@ app-footer {
 }
 
 #content-wrapper.has-inline-footer {
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 80px);
 }

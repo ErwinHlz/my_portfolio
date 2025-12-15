@@ -1,8 +1,11 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { FooterStateService } from 'src/app/services/footer-state.service';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-my-projects',
@@ -11,7 +14,7 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
   standalone: true,
   imports: [CommonModule, IonicModule, FormsModule, FooterComponent],
 })
-export class MyProjectsPage implements OnDestroy {
+export class MyProjectsPage implements OnDestroy, OnInit {
   selectedView: 'current' | 'past' = 'current';
   detailView: 'overview' | 'insights' = 'overview';
   activeProjectIndex = 0;
@@ -22,6 +25,8 @@ export class MyProjectsPage implements OnDestroy {
   activePreviewImage = '';
   activePreviewTitle = '';
   private videoTimeoutId?: ReturnType<typeof setTimeout>;
+  footerMode: 'fixed' | 'inline' | 'mobile' = 'fixed';
+  private readonly router = inject(Router);
 
   currentProjects = [
     {
@@ -131,6 +136,34 @@ export class MyProjectsPage implements OnDestroy {
       ],
     },
   ];
+
+  ngOnInit(): void {
+    this.updateFooterMode(this.router.url);
+    this.router.events
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe((e) => {
+        this.updateFooterMode(e.urlAfterRedirects);
+        if (typeof window !== 'undefined') {
+          window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+      });
+  }
+
+  private updateFooterMode(url: string) {
+    const path = url.split('?')[0];
+    const first = path.split('/').filter(Boolean)[0] || 'home';
+    const width = window.innerWidth;
+
+    if (first === 'home' && width >= 780) {
+      this.footerMode = 'fixed';
+    } else if (first === 'home' && width <= 780) {
+      this.footerMode = 'fixed';
+    } else if (first !== 'home' && width <= 780) {
+      this.footerMode = 'mobile';
+    } else if (first !== 'home' && width >= 780) {
+      this.footerMode = 'inline';
+    }
+  }
 
   get activeProjects() {
     return this.selectedView === 'current'

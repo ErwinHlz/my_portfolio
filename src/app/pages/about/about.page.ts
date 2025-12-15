@@ -12,6 +12,8 @@ import { TimelineComponent } from '../../components/timeline/timeline.component'
 import { Skill } from '../../models/skill.model';
 import { SkillsService } from '../../services/skills.service';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-about',
@@ -55,12 +57,40 @@ export class AboutPage implements OnInit {
   ];
 
   private readonly skillsService = inject(SkillsService);
+  footerMode: 'fixed' | 'inline' | 'mobile' = 'fixed';
+  private readonly router = inject(Router);
 
   ngOnInit(): void {
     this.skillsService.getSkills().subscribe({
       next: (skills) => (this.skills = skills),
       error: (err) => console.error('Fehler beim Laden der Skills:', err),
     });
+
+    this.updateFooterMode(this.router.url);
+    this.router.events
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe((e) => {
+        this.updateFooterMode(e.urlAfterRedirects);
+        if (typeof window !== 'undefined') {
+          window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+      });
+  }
+
+  private updateFooterMode(url: string) {
+    const path = url.split('?')[0];
+    const first = path.split('/').filter(Boolean)[0] || 'home';
+    const width = window.innerWidth;
+
+    if (first === 'home' && width >= 780) {
+      this.footerMode = 'fixed';
+    } else if (first === 'home' && width <= 780) {
+      this.footerMode = 'fixed';
+    } else if (first !== 'home' && width <= 780) {
+      this.footerMode = 'mobile';
+    } else if (first !== 'home' && width >= 780) {
+      this.footerMode = 'inline';
+    }
   }
 
   onScroll(ev: any) {

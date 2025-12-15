@@ -11,7 +11,7 @@ import { filter } from 'rxjs/operators';
   imports: [IonApp, IonRouterOutlet, NavbarComponent, FooterComponent],
 })
 export class AppComponent implements OnInit {
-  footerMode: 'fixed' | 'inline' = 'fixed';
+  footerMode: 'fixed' | 'inline' | 'mobile' = 'fixed';
   private readonly router = inject(Router);
   private spriteMounted = false;
 
@@ -33,7 +33,17 @@ export class AppComponent implements OnInit {
   private updateFooterMode(url: string) {
     const path = url.split('?')[0];
     const first = path.split('/').filter(Boolean)[0] || 'home';
-    this.footerMode = first === 'home' ? 'fixed' : 'inline';
+    const width = window.innerWidth;
+
+    if (first === 'home' && width >= 780) {
+      this.footerMode = 'fixed';
+    } else if (first === 'home' && width <= 780) {
+      this.footerMode = 'fixed';
+    } else if (first !== 'home' && width <= 780) {
+      this.footerMode = 'mobile';
+    } else if (first !== 'home' && width >= 780) {
+      this.footerMode = 'inline';
+    }
   }
 
   private async mountSprite(url: string) {

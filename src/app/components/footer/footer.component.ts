@@ -9,12 +9,15 @@ import { Component, HostBinding, Input } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  @Input() mode: 'fixed' | 'inline' = 'fixed';
+  @Input() mode: 'fixed' | 'inline' | 'mobile' = 'fixed';
   @HostBinding('class.is-fixed') get isFixed() {
     return this.mode === 'fixed';
   }
   @HostBinding('class.is-inline') get isInline() {
     return this.mode === 'inline';
+  }
+  @HostBinding('class.is-mobile') get isMobile() {
+    return this.mode === 'mobile';
   }
 
   readonly currentYear = new Date().getFullYear();
