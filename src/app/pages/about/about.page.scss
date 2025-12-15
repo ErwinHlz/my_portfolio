@@ -131,11 +131,25 @@ ion-content::part(scroll) {
 .section--timeline {
   justify-content: center;
   justify-self: center;
-  width: 100%;
+  width: 100dvw;
+  align-items: center;
+  padding: 0 16px;
 }
 
 .timeline-component {
   justify-self: center;
+}
+
+@media (width <= 768px) {
+  .section--timeline {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section--timeline .section__inner {
+    width: 100dvw;
+    gap: 16px;
+  }
 }
 
 .section__inner {
@@ -416,14 +430,9 @@ ion-content::part(scroll) {
   }
 
   .section {
-    width: 100vw;
-    height: 100vh;
-    padding: 60px 18px 40px;
+    width: 100dvw;
+    height: 100dvh;
     scroll-snap-align: start;
-  }
-
-  .section__inner {
-    padding: 28px 16px;
   }
 
   .skill-card {
@@ -450,7 +459,6 @@ ion-content::part(scroll) {
 
   .timeline-head {
     transform: none;
-    margin-bottom: 10px;
   }
 }
 
@@ -523,20 +531,11 @@ ion-content::part(scroll) {
 
   /* Timeline: align snap start and pull content to top on mobile */
   .section--timeline {
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 40px 12px 24px;
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
 
   .section--timeline .section__inner {
-    width: 100%;
     padding: 0 0 16px;
-  }
-
-  .timeline-head {
-    margin: 0 0 12px;
-    text-align: left;
   }
 }
