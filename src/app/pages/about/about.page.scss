@@ -103,14 +103,14 @@ ion-content::part(scroll) {
 .section {
   width: 100%;
   max-width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: rgb(252, 241, 179);
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
@@ -417,7 +417,7 @@ ion-content::part(scroll) {
 
 @media (width <= 900px) {
   ion-content::part(scroll) {
-    scroll-snap-type: y proximity;
+    scroll-snap-type: y mandatory;
   }
 
   .hero {
@@ -430,8 +430,9 @@ ion-content::part(scroll) {
   }
 
   .section {
-    width: 100dvw;
-    height: 100dvh;
+    width: 100%;
+    height: auto;
+    min-height: 100dvh;
     scroll-snap-align: start;
   }
 
@@ -533,6 +534,9 @@ ion-content::part(scroll) {
   .section--timeline {
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 48px;
   }
 
   .section--timeline .section__inner {
