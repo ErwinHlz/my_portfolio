@@ -283,14 +283,6 @@ section {
   object-fit: contain;
 }
 
-/* Opera-specific quirk: drop-shadow on SVG can render black */
-@supports (-o-object-fit: fill) {
-  .book__bg {
-    filter: none;
-  }
-}
-
-
 .page {
   height: 100%;
   min-height: 0;
@@ -385,7 +377,6 @@ section {
   display: none;
 }
 
-/* Tablet layout tweaks */
 @media (min-width: 768px) and (max-width: 1400px) {
   .project-stage {
     grid-template-columns: 1fr;
@@ -741,41 +732,37 @@ section {
   .stage-right .page--left {
     border-bottom: none;
     border-right: 1px solid rgb(var(--accent-gold-rgb), 0.12);
-    background:
-    /* Papierstreifen */ repeating-linear-gradient(
+    background: repeating-linear-gradient(
         0deg,
         rgba(90, 70, 40, 0.1) 0 2px,
         rgba(255, 255, 255, 0) 2px 10px
       ),
-      /* Papier-Verlauf + Patina */
-        linear-gradient(
-          90deg,
-          #5a4b27 0%,
-          var(--paper-1) 10%,
-          var(--paper-2) 55%,
-          var(--paper-3) 80%,
-          #5a4b27 100%
-        );
+      linear-gradient(
+        90deg,
+        #5a4b27 0%,
+        var(--paper-1) 10%,
+        var(--paper-2) 55%,
+        var(--paper-3) 80%,
+        #5a4b27 100%
+      );
   }
 
   .stage-right .page--right {
     border-bottom: none;
     border-right: 1px solid rgb(var(--accent-gold-rgb), 0.12);
-    background:
-    /* Papierstreifen */ repeating-linear-gradient(
+    background: repeating-linear-gradient(
         0deg,
         rgba(90, 70, 40, 0.1) 0 2px,
         rgba(255, 255, 255, 0) 2px 10px
       ),
-      /* Papier-Verlauf + Patina */
-        linear-gradient(
-          90deg,
-          #5a4b27 0%,
-          var(--paper-1) 25%,
-          var(--paper-2) 55%,
-          var(--paper-3) 85%,
-          #5a4b27 100%
-        );
+      linear-gradient(
+        90deg,
+        #5a4b27 0%,
+        var(--paper-1) 25%,
+        var(--paper-2) 55%,
+        var(--paper-3) 85%,
+        #5a4b27 100%
+      );
   }
 
   .stage-right .preview__label {

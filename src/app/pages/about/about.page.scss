@@ -5,7 +5,6 @@ ion-content {
 }
 
 ion-content::part(scroll) {
-  /* Scroll-Snapping pro Section */
   scroll-snap-type: y proximity;
 }
 
@@ -171,7 +170,7 @@ ion-content::part(scroll) {
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* zentriert letzte Reihe zuverlässig */
+  justify-content: center;
 }
 
 .section--personal {
@@ -277,7 +276,6 @@ ion-content::part(scroll) {
 }
 
 .hero__content {
-  /* ...bestehendes... */
   animation: fadeUpfromLeft 1s ease-out 0s both;
 }
 
@@ -530,7 +528,6 @@ ion-content::part(scroll) {
     transform: translate(-15%, 15%);
   }
 
-  /* Timeline: align snap start and pull content to top on mobile */
   .section--timeline {
     scroll-snap-align: start;
     scroll-snap-stop: always;

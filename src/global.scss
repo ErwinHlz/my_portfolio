@@ -88,7 +88,6 @@ nav a {
   letter-spacing: 0.08em;
 }
 
-/* Default Page Background (matches My Projects) */
 ion-app,
 ion-content {
   --background: radial-gradient(
@@ -106,7 +105,6 @@ ion-content {
   color: var(--text-primary);
 }
 
-/* Firefox fallback: force solid backgrounds and disable blend modes that can invert text */
 @-moz-document url-prefix() {
   body,
   ion-app,

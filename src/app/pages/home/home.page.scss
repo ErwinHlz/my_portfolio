@@ -1,7 +1,7 @@
 .page-center {
   min-height: 100vh;
   display: flex;
-  align-items: center; // vertikal zentriert
+  align-items: center;
   justify-content: center;
   pointer-events: none;
   position: relative;
@@ -46,8 +46,6 @@
   overflow-y: hidden;
   overscroll-behavior-y: contain;
 }
-
-/* Firefox fallback: disable blend-mode to prevent black text when background fails */
 
 @media (width <= 600px) {
   .page-center {
