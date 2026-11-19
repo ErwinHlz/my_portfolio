@@ -604,6 +604,11 @@ onBeforeUnmount(() => {
     right: auto;
     width: min(360px, 70vw);
     height: 100vh;
+    height: 100dvh;
+    /* deckender Grund, damit die Seite dahinter nicht durchscheint */
+    background-color: rgb(6 10 7 / 97%);
+    opacity: 1;
+    backdrop-filter: blur(10px);
     box-shadow: var(--drawer-shadow);
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;

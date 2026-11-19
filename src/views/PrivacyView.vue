@@ -4,7 +4,8 @@ import { siteOwner } from '@/data/siteOwner';
 </script>
 
 <template>
-  <LegalPage title="Datenschutzerklärung">
+  <!-- weicher Trennstrich: auf schmalen Displays „Datenschutz-/erklärung“ -->
+  <LegalPage :title="'Datenschutz­erklärung'">
     <section>
       <h2>Verantwortlicher</h2>
       <address>

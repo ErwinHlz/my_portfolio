@@ -179,6 +179,51 @@ function backToShire() {
   scene?.rideBack();
 }
 
+/* ---------- Vollbild ---------- */
+type FullscreenDoc = Document & {
+  webkitFullscreenElement?: Element | null;
+  webkitFullscreenEnabled?: boolean;
+  webkitExitFullscreen?: () => void;
+};
+type FullscreenEl = HTMLElement & { webkitRequestFullscreen?: () => void };
+
+const doc = document as FullscreenDoc;
+/** echtes Vollbild über die Fullscreen-API */
+const nativeFullscreen = ref(false);
+/** Ersatz, wo die API fehlt (iPhone-Safari): Szene füllt per CSS das Fenster */
+const pseudoFullscreen = ref(false);
+const isFullscreen = computed(() => nativeFullscreen.value || pseudoFullscreen.value);
+
+function onFullscreenChange() {
+  nativeFullscreen.value = (doc.fullscreenElement ?? doc.webkitFullscreenElement) === root.value;
+}
+
+function toggleFullscreen() {
+  if (pseudoFullscreen.value) {
+    pseudoFullscreen.value = false;
+    return;
+  }
+  if (nativeFullscreen.value) {
+    if (doc.exitFullscreen) void doc.exitFullscreen();
+    else doc.webkitExitFullscreen?.();
+    return;
+  }
+  const el = root.value as FullscreenEl | null;
+  if (!el) return;
+  const enabled = doc.fullscreenEnabled || doc.webkitFullscreenEnabled;
+  if (enabled && el.requestFullscreen) {
+    el.requestFullscreen().catch(() => (pseudoFullscreen.value = true));
+  } else if (enabled && el.webkitRequestFullscreen) {
+    el.webkitRequestFullscreen();
+  } else {
+    pseudoFullscreen.value = true;
+  }
+}
+
+function onKeydown(event: KeyboardEvent) {
+  if (event.key === 'Escape' && pseudoFullscreen.value) pseudoFullscreen.value = false;
+}
+
 function onMotionChange() {
   motion = !motionQuery?.matches;
 }
@@ -204,6 +249,10 @@ onMounted(() => {
     else stop();
   });
   visibilityObserver.observe(root.value);
+
+  document.addEventListener('fullscreenchange', onFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+  window.addEventListener('keydown', onKeydown);
 });
 
 onBeforeUnmount(() => {
@@ -211,14 +260,19 @@ onBeforeUnmount(() => {
   resizeObserver?.disconnect();
   visibilityObserver?.disconnect();
   motionQuery?.removeEventListener('change', onMotionChange);
+  document.removeEventListener('fullscreenchange', onFullscreenChange);
+  document.removeEventListener('webkitfullscreenchange', onFullscreenChange);
+  window.removeEventListener('keydown', onKeydown);
 });
 </script>
 
 <template>
+  <!-- im Ersatz-Vollbild direkt in den body, damit kein Elternelement die Szene einschränkt -->
+  <Teleport to="body" :disabled="!pseudoFullscreen">
   <div
     ref="root"
     class="neon"
-    :class="`is-${phase}`"
+    :class="[`is-${phase}`, { 'is-fullscreen': pseudoFullscreen }]"
     :style="{ '--neon-a': accentHex[0], '--neon-b': accentHex[1] }"
     @pointermove="onPointerMove"
     @pointerleave="onPointerLeave"
@@ -247,11 +301,20 @@ onBeforeUnmount(() => {
       <span class="logo logo--shire"></span>
     </div>
 
-
     <div class="music" :class="{ 'is-open': musicOpen }">
+      <div class="music__buttons">
+      <button type="button" class="corner-btn" :aria-pressed="isFullscreen" @click="toggleFullscreen">
+        <svg v-if="!isFullscreen" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" />
+        </svg>
+        <svg v-else viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" />
+        </svg>
+        <span class="sr-only">{{ isFullscreen ? 'Vollbild beenden' : 'Vollbild' }}</span>
+      </button>
       <button
         type="button"
-        class="music__toggle"
+        class="corner-btn music__toggle"
         :class="{ 'is-playing': spotifyPlaying }"
         :aria-expanded="musicOpen"
         aria-controls="playground-music"
@@ -260,6 +323,7 @@ onBeforeUnmount(() => {
         <span aria-hidden="true">♪</span>
         <span class="sr-only">Musik {{ musicOpen ? 'ausblenden' : 'einblenden' }}</span>
       </button>
+      </div>
       <!-- bleibt eingebunden, damit die Musik beim Zuklappen weiterläuft -->
       <div id="playground-music" class="music__panel" :inert="!musicOpen">
         <SpotifyPlayer ref="spotify" :track="song" @playing="onSpotifyPlaying" />
@@ -316,15 +380,8 @@ onBeforeUnmount(() => {
       </span>
     </button>
 
-    <div v-if="phase === 'neon'" class="neon__controls">
-      <div class="neon__group">
-        <button type="button" @click="backToShire">
-          <span aria-hidden="true">↺</span> Zurück ins Grüne
-        </button>
-      </div>
-    </div>
-
   </div>
+  </Teleport>
 </template>
 
 <style scoped lang="scss">
@@ -521,61 +578,6 @@ onBeforeUnmount(() => {
   &:focus-visible {
     outline: 2px solid var(--neon-b);
     outline-offset: 4px;
-  }
-}
-
-/* ---------- Steuerung ---------- */
-.neon__controls {
-  position: absolute;
-  left: 50%;
-  bottom: clamp(12px, 3.5%, 26px);
-  translate: -50% 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  width: max-content;
-  max-width: calc(100% - 24px);
-  animation: chapter-in 0.8s 0.4s ease both;
-}
-
-.neon__group {
-  display: flex;
-  gap: 4px;
-  padding: 4px;
-  border-radius: 999px;
-  border: 1px solid rgb(255 255 255 / 14%);
-  background: rgb(10 4 20 / 60%);
-  backdrop-filter: blur(8px);
-
-  button {
-    padding: 7px 13px;
-    border: 0;
-    border-radius: 999px;
-    background: transparent;
-    font-family: var(--font-ui);
-    font-size: 0.82rem;
-    color: #e8dcf5;
-    cursor: pointer;
-    transition:
-      background 0.25s ease,
-      color 0.25s ease,
-      box-shadow 0.25s ease;
-
-    &:hover {
-      background: rgb(255 255 255 / 8%);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--neon-b);
-      outline-offset: 2px;
-    }
-
-    &[aria-pressed='true'] {
-      background: var(--neon-a);
-      color: #14061f;
-      box-shadow: 0 0 18px var(--neon-a);
-    }
   }
 }
 
@@ -840,7 +842,7 @@ onBeforeUnmount(() => {
   }
 }
 
-/* ---------- Spotify-Musik unten rechts ---------- */
+/* ---------- Vollbild und Spotify-Musik unten rechts ---------- */
 .music {
   position: absolute;
   right: clamp(14px, 4%, 36px);
@@ -851,7 +853,14 @@ onBeforeUnmount(() => {
   gap: 10px;
 }
 
-.music__toggle {
+.music__buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.corner-btn {
+  display: grid;
+  place-items: center;
   width: 44px;
   height: 44px;
   padding: 0;
@@ -871,14 +880,55 @@ onBeforeUnmount(() => {
   }
 
   &:focus-visible {
-    outline: 2px solid #1ed760;
+    outline: 2px solid #fff;
     outline-offset: 3px;
   }
 
-  /* grüner Ring, solange Spotify spielt */
-  &.is-playing {
-    box-shadow: 0 0 0 2px #1ed760;
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
+}
+
+/* grüner Ring, solange Spotify spielt */
+.music__toggle.is-playing {
+  box-shadow: 0 0 0 2px #1ed760;
+}
+
+/* ---------- Vollbild: echte Fullscreen-API oder Ersatz per CSS ---------- */
+/* eigene Regel, damit ein Browser ohne -webkit-Selektor nicht alles verwirft */
+.neon:-webkit-full-screen {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  min-height: 0;
+  max-height: none;
+  border: 0;
+  border-radius: 0;
+}
+
+.neon:fullscreen,
+.neon.is-fullscreen {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  min-height: 0;
+  max-height: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.neon.is-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  height: 100dvh;
 }
 
 .music__panel {
@@ -926,7 +976,7 @@ onBeforeUnmount(() => {
     }
   }
 
-  /* unten im freien Streifen unter dem Fahrzeug: links Tag/Nacht bzw. Zurück, rechts Musik */
+  /* unten im freien Streifen unter dem Fahrzeug: links Tag/Nacht, rechts Vollbild und Musik */
   .music {
     right: 14px;
     bottom: 14px;
@@ -936,18 +986,6 @@ onBeforeUnmount(() => {
     width: min(320px, calc(100vw - 28px));
   }
 
-  .neon__controls {
-    left: 14px;
-    bottom: 14px;
-    translate: none;
-    max-width: calc(100% - 86px);
-  }
-
-  .neon__group button {
-    min-height: 44px;
-    padding: 6px 14px;
-    font-size: 0.8rem;
-  }
 }
 
 @media (width <= 700px) {
@@ -992,12 +1030,6 @@ onBeforeUnmount(() => {
     transform-origin: left bottom;
   }
 
-  /* links unten sitzt hier der Drehknopf, also „Zurück“ mittig */
-  .neon__controls {
-    left: 50%;
-    translate: -50% 0;
-  }
-
   .daynight-sign {
     bottom: 18px;
     scale: 0.6;
@@ -1009,8 +1041,7 @@ onBeforeUnmount(() => {
   .neon__sign.is-lit,
   .neon__chapter,
   .daynight-sign,
-  .dash-knob,
-  .neon__controls {
+  .dash-knob {
     animation: none;
   }
 }

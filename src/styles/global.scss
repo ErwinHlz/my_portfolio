@@ -197,3 +197,13 @@ nav a {
     background-color: transparent !important;
   }
 }
+
+/* Handy: lange deutsche Wörter in Überschriften sauber trennen statt mitten im Wort umbrechen */
+@media (width <= 600px) {
+  h1,
+  h2,
+  h3 {
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+}

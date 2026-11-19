@@ -63,6 +63,9 @@ defineProps<{
 }
 
 .page-hero__inner {
+  /* nie breiter als der verfügbare Platz, sonst ragt der Text auf schmalen Handys heraus */
+  width: 100%;
+  min-width: 0;
   max-width: 860px;
   display: grid;
   justify-items: center;

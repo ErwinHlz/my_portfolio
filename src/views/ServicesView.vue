@@ -358,8 +358,13 @@ const requestLink = { path: '/contact', query: { anliegen: 'webseite' } };
     --forest-map-inset: 0.35rem;
   }
 
+  /* rechts Platz für die Kartenrolle, links reicht der normale Seitenrand */
   .services__content {
-    padding-inline: max(0px, calc(var(--forest-map-width) + var(--forest-map-inset) - 12px));
+    padding-inline: 0 calc(var(--forest-map-width) + var(--forest-map-inset) - 10px);
+  }
+
+  .services :deep(.services__hero) {
+    padding-inline: 6px 28px;
   }
 
   .services__content > :is(#angebot, #zusammenarbeit, #ablauf, #fragen) {

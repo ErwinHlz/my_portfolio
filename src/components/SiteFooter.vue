@@ -11,7 +11,7 @@ const currentYear = new Date().getFullYear();
       <RouterLink to="/datenschutz">Datenschutz</RouterLink>
       <RouterLink to="/impressum">Impressum</RouterLink>
     </nav>
-    <p class="footer__copy">&copy; {{ currentYear }} Erwin Holzhauser. All rights served.</p>
+    <p class="footer__copy">&copy; {{ currentYear }} Erwin Holzhauser. All rights reserved.</p>
     <a
       class="footer__instagram"
       href="https://www.instagram.com/erwin.hlz/"
@@ -136,19 +136,43 @@ const currentYear = new Date().getFullYear();
   }
 }
 
+/* Handy: oben Links und Instagram, darunter das Copyright über die volle Breite */
 @media (width <= 600px) {
   .site-footer {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'legal insta'
+      'copy copy';
+    gap: 0 12px;
+    padding-inline: max(16px, env(safe-area-inset-left, 0px));
+  }
+
+  .site-footer.is-fixed {
+    padding-block: 4px calc(6px + env(safe-area-inset-bottom, 0px));
+    inset: auto 0 0;
   }
 
   .footer__legal {
-    display: grid;
-    gap: 0;
-    justify-items: start;
+    grid-area: legal;
+    gap: 0 20px;
+  }
+
+  .footer__legal a {
+    min-height: 44px;
+    font-size: 0.9rem;
+  }
+
+  .footer__instagram {
+    grid-area: insta;
+    width: 44px;
+    height: 44px;
   }
 
   .footer__copy {
-    font-size: 0.7rem;
+    grid-area: copy;
+    justify-self: start;
+    font-size: 0.75rem;
+    text-align: left;
   }
 }
 
