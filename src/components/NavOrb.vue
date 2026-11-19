@@ -4,15 +4,36 @@ import {
   combineRotations,
   createOrbRenderer,
   rotationBetween,
+  rotationMatrix,
   trackballPoint,
   type Rotation,
   type Vector,
 } from './navOrb';
+import type { Orb, OrbColors } from './palantir';
+import { createGlOrb } from './palantirGl';
+
+/** Farben der Header-Kugel; im Light Mode färbt --orb-color-filter sie wie bisher um. */
+const MIST_COLORS: OrbColors = {
+  deep: '34, 26, 16',
+  glass: '95, 68, 38',
+  core: '255, 176, 72',
+  mist: '255, 214, 150',
+  reflex: '255, 246, 222',
+  rim: '255, 224, 146',
+};
 
 const canvas = ref<HTMLCanvasElement | null>(null);
+const mistCanvas = ref<HTMLCanvasElement | null>(null);
+const misty = ref(false);
 let orientation: Rotation = [0, 0, 0, 1];
 let render: ReturnType<typeof createOrbRenderer>;
+let mist: Orb | null = null;
+let mistResize: ResizeObserver | undefined;
+let reducedMotion: MediaQueryList | undefined;
 let frame = 0;
+let lastTime = 0;
+let stir = 0;
+let pointer: { x: number; y: number } | null = null;
 let yaw = 0;
 let pitch = 0;
 let targetYaw = 0;
@@ -45,12 +66,40 @@ function hoverRotation() {
 function scheduleRender() {
   if (frame) return;
 
-  frame = requestAnimationFrame(() => {
+  frame = requestAnimationFrame((now) => {
     frame = 0;
+    const dt = lastTime ? Math.min((now - lastTime) / 1000, 0.05) : 1 / 60;
+    lastTime = now;
+
     const settling = Math.abs(targetYaw - yaw) > 0.003 || Math.abs(targetPitch - pitch) > 0.003;
     yaw = settling ? yaw + (targetYaw - yaw) * 0.22 : targetYaw;
     pitch = settling ? pitch + (targetPitch - pitch) * 0.22 : targetPitch;
-    render?.(combineRotations(hoverRotation(), orientation));
+    const rotation = combineRotations(hoverRotation(), orientation);
+
+    if (mist) {
+      const still = !!reducedMotion?.matches;
+      stir *= Math.exp(-dt * 1.4);
+      mist.render({
+        vision: -1,
+        clarity: 0,
+        lean: 0,
+        yaw: 0,
+        pitch: 0,
+        rotation: rotationMatrix(rotation),
+        stir: still ? 0 : stir,
+        time: still ? 0 : now / 1000,
+        dt: still ? 0 : dt,
+        pointer: still ? null : pointer,
+      });
+      // Der Nebel wabert dauerhaft, außer bei reduzierter Bewegung
+      if (!still) {
+        scheduleRender();
+        return;
+      }
+    } else {
+      render?.(rotation);
+    }
+
     if (settling) scheduleRender();
   });
 }
@@ -117,6 +166,26 @@ function moveDrag(event: PointerEvent) {
   wasDragged = true;
 }
 
+/** Zeiger über der Kugel verwirbelt den Nebel */
+function stirMist(event: PointerEvent) {
+  if (!mist) return;
+
+  const bounds = (event.currentTarget as HTMLElement).getBoundingClientRect();
+  const point = { x: event.clientX - bounds.left, y: event.clientY - bounds.top };
+  if (pointer)
+    stir = Math.min(stir + Math.hypot(point.x - pointer.x, point.y - pointer.y) * 0.03, 2.4);
+  pointer = point;
+}
+
+function handlePointerMove(event: PointerEvent) {
+  stirMist(event);
+  moveDrag(event);
+}
+
+function handlePointerLeave() {
+  pointer = null;
+}
+
 function stopDrag(event: PointerEvent) {
   if (event.pointerId === drag?.pointerId) drag = null;
 }
@@ -133,13 +202,38 @@ function handleKeydown(event: KeyboardEvent) {
   rotate(delta);
 }
 
+function resizeMist() {
+  if (!mist || !mistCanvas.value) return;
+  mist.resize(mistCanvas.value.clientWidth || 160);
+  scheduleRender();
+}
+
 onMounted(() => {
+  // Nebel per WebGL; ohne WebGL bleibt die bisherige Bronzekugel
+  if (mistCanvas.value) mist = createGlOrb(mistCanvas.value, [], () => undefined);
+
+  if (mist) {
+    misty.value = true;
+    mist.setColors(MIST_COLORS);
+    reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    reducedMotion.addEventListener('change', scheduleRender);
+    mistResize = new ResizeObserver(resizeMist);
+    if (mistCanvas.value) mistResize.observe(mistCanvas.value);
+    resizeMist();
+    return;
+  }
+
   if (!canvas.value) return;
   render = createOrbRenderer(canvas.value);
   render?.(orientation);
 });
 
-onBeforeUnmount(() => cancelAnimationFrame(frame));
+onBeforeUnmount(() => {
+  cancelAnimationFrame(frame);
+  mistResize?.disconnect();
+  reducedMotion?.removeEventListener('change', scheduleRender);
+  mist?.dispose();
+});
 </script>
 
 <template>
@@ -148,12 +242,14 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
     type="button"
     aria-label="Kugel drehen"
     @pointerdown="startDrag"
-    @pointermove="moveDrag"
+    @pointermove="handlePointerMove"
+    @pointerleave="handlePointerLeave"
     @lostpointercapture="stopDrag"
     @click="handleClick"
     @keydown="handleKeydown"
   >
-    <canvas ref="canvas" width="160" height="160" aria-hidden="true"></canvas>
+    <canvas v-show="!misty" ref="canvas" width="160" height="160" aria-hidden="true"></canvas>
+    <canvas v-show="misty" ref="mistCanvas" class="nav-orb__mist" aria-hidden="true"></canvas>
   </button>
 </template>
 

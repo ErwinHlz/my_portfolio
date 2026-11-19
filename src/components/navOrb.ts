@@ -25,6 +25,24 @@ export function combineRotations([x, y, z, w]: Rotation, [a, b, c, d]: Rotation)
     : [a, b, c, d];
 }
 
+/**
+ * Drehmatrix Welt → Kugel für den WebGL-Nebel (spaltenweise, y nach oben).
+ * Entspricht der Matrix in createOrbRenderer, dort zeigt y allerdings nach unten,
+ * daher werden die y-Anteile gespiegelt.
+ */
+export function rotationMatrix([qx, qy, qz, qw]: Rotation) {
+  const xx = 1 - 2 * (qy * qy + qz * qz);
+  const xy = 2 * (qx * qy + qw * qz);
+  const xz = 2 * (qx * qz - qw * qy);
+  const yx = 2 * (qx * qy - qw * qz);
+  const yy = 1 - 2 * (qx * qx + qz * qz);
+  const yz = 2 * (qy * qz + qw * qx);
+  const zx = 2 * (qx * qz + qw * qy);
+  const zy = 2 * (qy * qz - qw * qx);
+  const zz = 1 - 2 * (qx * qx + qy * qy);
+  return [xx, -yx, zx, -xy, yy, -zy, xz, -yz, zz];
+}
+
 export function createOrbRenderer(canvas: HTMLCanvasElement) {
   const context = canvas.getContext('2d');
   if (!context) return;

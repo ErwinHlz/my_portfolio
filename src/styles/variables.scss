@@ -118,6 +118,15 @@
   --orb-shadow:
     0 0 0 1px rgb(255 239 180 / 75%), 0 0 15px 3px rgb(255 224 146 / 65%),
     0 0 34px 8px rgb(255 202 93 / 38%), 0 7px 25px rgb(0 0 0 / 57%);
+  --palantir-deep: 5, 3, 2;
+  --palantir-glass: 46, 22, 9;
+  --palantir-core: 255, 112, 34;
+  --palantir-mist: 255, 178, 104;
+  --palantir-reflex: 255, 244, 214;
+  --palantir-rim: 214, 179, 92;
+  --palantir-metal-dark: #0e0905;
+  --palantir-metal: #4c3620;
+  --palantir-metal-light: #b48c52;
   --accent-mint: #a4fff4;
   --accent-mint-rgb: 164, 255, 244;
   --shadow-strong: 0 16px 40px rgb(0 0 0 / 45%);
@@ -246,6 +255,15 @@
   --orb-shadow:
     0 0 0 1px rgb(62 47 86 / 62%), 0 7px 18px rgb(36 24 55 / 29%),
     0 0 24px 4px rgb(115 84 154 / 28%);
+  --palantir-deep: 58, 78, 114;
+  --palantir-glass: 196, 212, 232;
+  --palantir-core: 118, 156, 228;
+  --palantir-mist: 246, 250, 255;
+  --palantir-reflex: 255, 255, 255;
+  --palantir-rim: 105, 73, 147;
+  --palantir-metal-dark: #3c4558;
+  --palantir-metal: #8995a8;
+  --palantir-metal-light: #eef2f8;
 }
 
 @media (width <= 900px) {
