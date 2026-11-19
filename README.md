@@ -1,53 +1,35 @@
-# Portfolio (Ionic / Angular)
+# Portfolio (Vite / Vue)
 
-Personal portfolio built with Ionic 8 and Angular 20. It showcases projects, timeline, contact options, and a custom animated background while staying mobile-first and touch-friendly.
+Persönliches Portfolio von Erwin Holzhauser – gebaut mit Vue 3, Vite und TypeScript.
 
 ## Features
 
-- Animated background grid on the home page with drag interaction
-- Project slider with previews (current/past), lightbox view, and progress indicators
-- Timeline component for career highlights
-- Responsive navigation with hamburger/side menu, footer with socials
-- Themeable via `src/theme/variables.scss` and global styles in `src/global.scss`
+- Interaktives, ziehbares Hintergrund-Grid auf der Startseite (mit Trägheit)
+- Projekt-Ansicht mit Einblicken im „Buch“, Lightbox und Fortschrittsanzeige
+- Timeline für den Werdegang, Skill-Karten, Hobbys
+- Responsive Navigation mit Seitenmenü, Footer mit Social Links
 
 ## Tech Stack
 
-- Angular 20, Ionic Framework 8
-- Capacitor 7 (app shell, optional native)
-- TypeScript, SCSS, RxJS
+- Vue 3 (`<script setup>`), vue-router
+- Vite, TypeScript, SCSS
 
-## Structure (high level)
+## Struktur
 
-- `src/app/pages/` — main screens (`home`, `about`, `my-projects`, `contact`)
-- `src/app/components/` — shared UI (navbar, footer, bg-grid, timeline, etc.)
-- `src/assets/` — images, icons, SVGs
-- `src/theme/variables.scss` — design tokens/colors
+- `src/views/` – Seiten (`Home`, `About`, `Projects`, `Contact`)
+- `src/components/` – NavBar, SiteFooter, BgGrid, TimelineChart
+- `src/composables/` – wiederverwendbare Logik (Drag/Pan, Footer-Modus)
+- `src/data/` – Inhalte (Skills, Timeline, Projekte)
+- `src/styles/` – Design-Tokens (`variables.scss`) und globale Styles
+- `public/assets/` – Bilder, Icons, SVG-Sprites
 
-## Getting Started
+## Entwicklung
 
 ```bash
-git clone <repo-url>
-cd my_portfolio
 npm install
-npm start   # or: ng serve
+npm run dev       # Dev-Server
+npm run build     # Typecheck + Produktions-Build nach dist/
+npm run preview   # Build lokal ansehen
 ```
 
-The app runs at `http://localhost:4200/` by default.
-
-## Scripts
-
-- `npm start` — dev server with live reload
-- `npm run build` — production build (outputs to `dist/`)
-- `npm test` — unit tests (Karma/Jasmine)
-- `npm run lint` — ESLint for TS + templates
-
-## Build & Deploy
-
-- Web: `npm run build` → serve `dist/` with any static host.
-- Native (optional): `npm run build` then `npx cap sync` for the target platform.
-
-## Customization
-
-- Colors/spacing/typography: adjust `src/theme/variables.scss`.
-- Global tweaks: `src/global.scss`.
-- Content/data: update page components in `src/app/pages/` and shared components in `src/app/components/`.
+Deployment läuft per GitHub Actions auf GitHub Pages (`.github/workflows/ci-deploy.yml`).

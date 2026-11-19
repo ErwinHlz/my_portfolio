@@ -1,7 +1,0 @@
-{
-  "name": "my_portfolio",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular-standalone"
-}

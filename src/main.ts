@@ -1,24 +1,10 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import {
-  RouteReuseStrategy,
-  provideRouter,
-  withPreloading,
-  PreloadAllModules,
-} from '@angular/router';
-import {
-  IonicRouteStrategy,
-  provideIonicAngular,
-} from '@ionic/angular/standalone';
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import { vReveal } from './directives/reveal';
 
-import { routes } from './app/app.routes';
-import { AppComponent } from './app/app.component';
-import { provideHttpClient } from '@angular/common/http';
+import './styles/variables.scss';
+import './styles/global.scss';
+import './styles/realm.scss';
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    provideIonicAngular(),
-    provideRouter(routes, withPreloading(PreloadAllModules)),
-    provideHttpClient(),
-  ],
-});
+createApp(App).use(router).directive('reveal', vReveal).mount('#app');

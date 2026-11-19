@@ -25,28 +25,22 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint
-        run: npm run lint
-
-      - name: Prettier check
-        run: npm run prettier:write
-
-      - name: Build app
+      - name: Build app (inkl. Typecheck)
         run: npm run build
 
       - name: Add SPA fallback (404.html)
-        run: cp www/index.html www/404.html
+        run: cp dist/index.html dist/404.html
 
       - name: Upload build as GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: www
+          path: dist
 
   deploy:
     needs: build

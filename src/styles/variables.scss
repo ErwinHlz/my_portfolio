@@ -1,0 +1,255 @@
+:root {
+  color-scheme: dark;
+  --browser-theme-color: #a97c32;
+  --site-header-depth: calc(8.5rem + env(safe-area-inset-top, 0px));
+  --color-night: #0b0a07;
+  --color-shadow: #13110c;
+  --color-stone: #19160f;
+  --surface-shadow: #0d0f0b;
+  --color-ink: #1a1e2e;
+  --accent-gold: #d6b35c;
+  --accent-gold-rgb: 214, 179, 92;
+  --accent-forest: #2f6b3c;
+  --accent-forest-rgb: 47, 107, 60;
+  --accent-ember: #b44b2a;
+  --accent-ice: #9ad0ff;
+  --accent-ice-rgb: 154, 208, 255;
+  --surface-parchment: #e9dfc4;
+  --text-primary: #f4efe3;
+  --text-muted: #cfc6b0;
+  --text-muted-strong: #b7ae9c;
+  --text-soft: #dcd6c5;
+  --text-heading: #fcf1b3;
+  --eyebrow-color: var(--accent-gold);
+  --eyebrow-size: 0.8rem;
+  --eyebrow-weight: 600;
+  --eyebrow-shadow: none;
+  --primary-button-text: #0b0a07;
+  --primary-button-surface: linear-gradient(180deg, #f1d58a, #c99a3c);
+  --gold-lettering: linear-gradient(
+    200deg,
+    #fff9da,
+    #ffe28e 20%,
+    #d8a53b 45%,
+    #fff2b9 58%,
+    #b37618 80%,
+    #ffe7a3
+  );
+  --card-surface: linear-gradient(180deg, rgb(25 22 15 / 92%), rgb(11 10 7 / 96%));
+  --featured-surface: linear-gradient(180deg, rgb(30 26 17 / 95%), rgb(11 10 7 / 98%));
+  --section-surface: rgb(19 17 12 / 60%);
+  --field-surface: rgb(0 0 0 / 35%);
+  --card-shadow: 0 18px 40px rgb(0 0 0 / 40%);
+  --card-shadow-hover: 0 22px 48px rgb(0 0 0 / 50%);
+  --photo-grid-shadow: #4b4431;
+  --journey-track: rgb(214 179 92 / 54%);
+  --journey-light: #ffe1a0;
+  --journey-glow: rgb(255 202 105 / 55%);
+  --forest-shade: radial-gradient(
+    ellipse at 50% 46%,
+    rgb(10 14 8 / 55%),
+    rgb(10 12 7 / 33%) 53%,
+    rgb(6 10 7 / 76%)
+  );
+  --forest-mist: rgb(229 194 112 / 40%);
+  --forest-beam: rgb(208 212 133 / 13%);
+  --woodland-sky: #142117;
+  --woodland-mist: #677550;
+  --woodland-ground: #303c22;
+  --woodland-ground-shade: #101b11;
+  --woodland-path: #6f6038;
+  --woodland-path-shade: #423522;
+  --woodland-foliage: #a1a16d;
+  --woodland-fern: #9d9e54;
+  --woodland-mushroom: #c67d49;
+  --woodland-petals: #e2c78e;
+  --woodland-lantern-frame: #33271b;
+  --woodland-lantern-rim: #957047;
+  --woodland-lantern-glass: #fff5d4;
+  --woodland-lantern-glow: 244 183 80;
+  --forest-firefly: #fff0aa;
+  --forest-firefly-glow: rgb(244 218 114 / 68%);
+  --woodland-tree-opacity: 1;
+  --forest-map-paper: #d7b477;
+  --forest-map-highlight: #f1d7a0;
+  --forest-map-edge: #754724;
+  --forest-map-stain: rgb(117 67 32 / 42%);
+  --forest-map-ink: #57391e;
+  --forest-map-track: rgb(101 55 23 / 68%);
+  --forest-map-route: #873a1d;
+  --forest-map-glow: rgb(246 190 92 / 80%);
+  --forest-text-shadow: 0 2px 7px rgb(5 8 4 / 85%);
+  --photo-frame-shadow: 0 30px 60px rgb(0 0 0 / 50%);
+  --project-frame-shadow: 0 40px 80px rgb(0 0 0 / 60%);
+  --hero-image-filter: sepia(0.35) saturate(0.85);
+  --hero-image-opacity: 0.32;
+  --hero-text-shadow: rgb(255 214 120 / 35%);
+  --home-backdrop: rgb(12 10 7 / 92%);
+  --home-title: #ffecad;
+  --home-title-shadow: 0 2px 3px #0c0a07, 0 0 24px rgb(224 167 67 / 30%);
+  --header-home-surface: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 93%),
+    rgb(0 0 0 / 48%) 58%,
+    transparent
+  );
+  --header-page-surface: linear-gradient(180deg, #0b0a07 10%, rgb(11 10 7 / 88%) 70%, transparent);
+  --nav-link-shadow: 0 1px 2px #000, 0 0 7px #000;
+  --nav-link-color: var(--accent-gold);
+  --nav-active-color: var(--text-heading);
+  --nav-active-shadow: var(--nav-link-shadow);
+  --nav-hover-glow: rgb(var(--accent-gold-rgb), 0.45);
+  --drawer-shadow: 8px 0 24px rgb(0 0 0 / 40%);
+  --instagram-icon-shadow: rgb(22 13 6 / 76%);
+  --logo-tone-1: #fff3c4;
+  --logo-tone-2: #c49346;
+  --logo-tone-3: #ffe3a2;
+  --logo-tone-4: #bb883b;
+  --logo-tone-5: #f4d489;
+  --logo-reflection-edge: #ffdf92;
+  --logo-reflection-mid: #ffe7a9;
+  --logo-reflection-bright: #fff9db;
+  --logo-halo: rgb(248 191 75 / 43%);
+  --logo-shadow: drop-shadow(0 2px 3px rgb(0 0 0 / 66%)) drop-shadow(0 0 7px rgb(251 209 118 / 38%));
+  --logo-hover-shadow: drop-shadow(0 4px 5px rgb(0 0 0 / 62%))
+    drop-shadow(0 0 12px rgb(255 220 142 / 66%));
+  --orb-surface: radial-gradient(circle at 30% 47%, #c69b54, #5f4426 48%, #221a10 85%);
+  --orb-color-filter: none;
+  --orb-shadow:
+    0 0 0 1px rgb(255 239 180 / 75%), 0 0 15px 3px rgb(255 224 146 / 65%),
+    0 0 34px 8px rgb(255 202 93 / 38%), 0 7px 25px rgb(0 0 0 / 57%);
+  --accent-mint: #a4fff4;
+  --accent-mint-rgb: 164, 255, 244;
+  --shadow-strong: 0 16px 40px rgb(0 0 0 / 45%);
+  --border-soft: rgb(var(--accent-gold-rgb), 0.14);
+  --border-mid: rgb(var(--accent-gold-rgb), 0.22);
+  --border-strong: rgb(var(--accent-gold-rgb), 0.4);
+
+  --paper-1: #f3ead7;
+  --paper-2: #eadbbf;
+  --paper-3: #e2d1b2;
+  --ink: #14120f;
+
+  --font-display: 'Cinzel', 'EB Garamond', georgia, serif;
+  --font-body: 'Cormorant Garamond', 'EB Garamond', georgia, serif;
+  --font-accent: 'UnifrakturCook', 'Cinzel', georgia, serif;
+
+  /* Systemschrift, die Ionic bisher im Seiteninhalt verwendet hat */
+  --font-ui: 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --browser-theme-color: #f6f8fb;
+  --color-night: #f6f8fb;
+  --color-shadow: #e1e8f0;
+  --color-stone: #f9fbfd;
+  --accent-gold: #694993;
+  --accent-gold-rgb: 105, 73, 147;
+  --accent-forest: #4b7168;
+  --accent-forest-rgb: 75, 113, 104;
+  --accent-ice-rgb: 92, 129, 160;
+  --text-primary: #202b39;
+  --text-muted: #495a6b;
+  --text-muted-strong: #566575;
+  --text-soft: #344557;
+  --text-heading: #1b3046;
+  --eyebrow-color: #602d8d;
+  --eyebrow-size: 0.9rem;
+  --eyebrow-weight: 700;
+  --eyebrow-shadow: 0 1px 2px #fff, 0 0 12px rgb(130 82 176 / 28%);
+  --primary-button-text: #361a52;
+  --primary-button-surface: linear-gradient(180deg, #f4effa, #e3d6f2);
+  --gold-lettering: linear-gradient(200deg, #3d5974, #263f57 42%, #172d43 70%, #354f69);
+  --card-surface: linear-gradient(180deg, #fcfdff, #eaf0f6);
+  --featured-surface: linear-gradient(180deg, #f8f3fc, #eae0f5);
+  --section-surface: #e9eff5;
+  --field-surface: #fff;
+  --card-shadow: 0 12px 32px rgb(66 43 94 / 13%);
+  --card-shadow-hover: 0 18px 38px rgb(66 43 94 / 19%);
+  --shadow-strong: 0 16px 40px rgb(66 43 94 / 19%);
+  --photo-grid-shadow: rgb(62 45 87 / 21%);
+  --journey-track: rgb(109 73 151 / 43%);
+  --journey-light: #7843b0;
+  --journey-glow: rgb(147 92 207 / 41%);
+  --forest-shade: radial-gradient(
+    ellipse at 50% 44%,
+    rgb(248 248 251 / 94%),
+    rgb(242 240 248 / 85%) 58%,
+    rgb(232 228 242 / 70%)
+  );
+  --forest-mist: rgb(212 187 239 / 50%);
+  --forest-beam: rgb(252 249 255 / 62%);
+  --woodland-sky: #98ac98;
+  --woodland-mist: #e8eadb;
+  --woodland-ground: #bac5a8;
+  --woodland-ground-shade: #66816a;
+  --woodland-path: #d6c69e;
+  --woodland-path-shade: #a58e72;
+  --woodland-foliage: #65715a;
+  --woodland-fern: #576f47;
+  --woodland-mushroom: #af654c;
+  --woodland-petals: #a583ae;
+  --woodland-lantern-frame: #483a31;
+  --woodland-lantern-rim: #9a795b;
+  --woodland-lantern-glass: #fff8e4;
+  --woodland-lantern-glow: 232 161 69;
+  --forest-firefly: #8857b4;
+  --forest-firefly-glow: rgb(152 97 192 / 53%);
+  --woodland-tree-opacity: 0.72;
+  --forest-map-paper: #e4c891;
+  --forest-map-highlight: #f9e5ba;
+  --forest-map-edge: #89633c;
+  --forest-map-stain: rgb(139 92 54 / 28%);
+  --forest-map-ink: #614432;
+  --forest-map-track: rgb(91 60 104 / 59%);
+  --forest-map-route: #683280;
+  --forest-map-glow: rgb(156 100 184 / 56%);
+  --forest-text-shadow: 0 1px 5px rgb(252 251 255 / 90%);
+  --photo-frame-shadow: 0 22px 48px rgb(66 43 94 / 19%);
+  --project-frame-shadow: 0 26px 58px rgb(66 43 94 / 20%);
+  --hero-image-filter: grayscale(0.45) saturate(0.6);
+  --hero-image-opacity: 0.2;
+  --hero-text-shadow: rgb(249 252 255 / 75%);
+  --home-backdrop: rgb(248 251 255 / 96%);
+  --home-title: var(--text-heading);
+  --home-title-shadow: 0 1px 2px #fff, 0 5px 18px rgb(78 54 112 / 19%);
+  --header-home-surface: linear-gradient(
+    180deg,
+    #f9fbfd 12%,
+    rgb(242 247 253 / 96%) 74%,
+    transparent
+  );
+  --header-page-surface: linear-gradient(180deg, #f9fbfd 12%, var(--color-night) 74%, transparent);
+  --nav-link-color: #443b51;
+  --nav-active-color: #622691;
+  --nav-link-shadow: 0 1px 2px rgb(253 250 255 / 90%);
+  --nav-active-shadow: 0 1px 2px #fff, 0 0 11px rgb(137 82 186 / 29%);
+  --nav-hover-glow: rgb(137 82 186 / 42%);
+  --drawer-shadow: 8px 0 24px rgb(66 43 94 / 20%);
+  --footer-surface: rgb(241 246 252 / 94%);
+  --instagram-icon-shadow: rgb(252 247 255 / 94%);
+  --logo-tone-1: #26143b;
+  --logo-tone-2: #4f2d6e;
+  --logo-tone-3: #835ca5;
+  --logo-tone-4: #392055;
+  --logo-tone-5: #624381;
+  --logo-reflection-edge: #d2b7ea;
+  --logo-reflection-mid: #e6d3f6;
+  --logo-reflection-bright: #fff5ff;
+  --logo-halo: rgb(144 94 185 / 33%);
+  --logo-shadow: drop-shadow(0 2px 4px rgb(65 36 94 / 28%));
+  --logo-hover-shadow: drop-shadow(0 4px 9px rgb(134 82 178 / 42%));
+  --orb-surface: radial-gradient(circle at 30% 47%, #7b6c9b, #39304f 48%, #171221 85%);
+  --orb-color-filter: grayscale(1) sepia(0.48) hue-rotate(216deg) saturate(2.25) brightness(0.73)
+    contrast(1.1);
+  --orb-shadow:
+    0 0 0 1px rgb(62 47 86 / 62%), 0 7px 18px rgb(36 24 55 / 29%),
+    0 0 24px 4px rgb(115 84 154 / 28%);
+}
+
+@media (width <= 900px) {
+  :root {
+    --site-header-depth: calc(max(10vh, 64px) + env(safe-area-inset-top, 0px));
+  }
+}
