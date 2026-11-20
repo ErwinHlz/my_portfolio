@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <!-- Software jeder Art: Laptop mit App-Fenstern und daneben ein Handy -->
+  <defs>
+    <mask id="phone-gap">
+      <rect width="320" height="320" fill="#fff" />
+      <rect x="196" y="122" width="96" height="164" rx="18" fill="#000" />
+    </mask>
+  </defs>
+  <g fill="#ffdf83">
+    <g mask="url(#phone-gap)">
+      <!-- Bildschirm (Rahmen) mit zwei App-Kacheln -->
+      <path fill-rule="evenodd" d="M58 70 H246 a14 14 0 0 1 14 14 V214 H44 V84 a14 14 0 0 1 14 -14 Z M64 90 V196 H240 V90 Z" />
+      <rect x="78" y="104" width="70" height="40" rx="6" />
+      <rect x="78" y="154" width="120" height="28" rx="6" opacity="0.75" />
+      <rect x="160" y="104" width="64" height="40" rx="6" opacity="0.75" />
+      <!-- Unterteil -->
+      <path d="M20 224 H284 L 270 246 H34 Z" />
+    </g>
+    <!-- Handy -->
+    <path fill-rule="evenodd" d="M218 132 H272 a12 12 0 0 1 12 12 V264 a12 12 0 0 1 -12 12 H218 a12 12 0 0 1 -12 -12 V144 a12 12 0 0 1 12 -12 Z M218 150 V252 H272 V150 Z" />
+    <rect x="226" y="160" width="38" height="22" rx="4" />
+    <rect x="226" y="190" width="38" height="12" rx="3" opacity="0.75" />
+    <rect x="226" y="208" width="26" height="12" rx="3" opacity="0.75" />
+    <circle cx="245" cy="264" r="4.5" fill="#1a120a" />
+  </g>
+</svg>

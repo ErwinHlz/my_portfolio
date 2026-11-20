@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <!-- Auf dem Platz: Fußball (Fünfeck in der Mitte, Flecken am Rand) und Trainerpfeife -->
+  <defs>
+    <clipPath id="ball"><circle cx="146" cy="150" r="104" /></clipPath>
+  </defs>
+  <g clip-path="url(#ball)" fill="#ffdf83" stroke="#e7b752" stroke-width="5" stroke-linejoin="round"><polygon points="146.0,80.1 115.6,58.0 127.2,22.2 164.8,22.2 176.4,58.0" /><polygon points="212.5,128.4 224.1,92.6 261.7,92.6 273.4,128.4 242.9,150.5" /><polygon points="187.1,206.6 224.7,206.6 236.3,242.3 205.9,264.5 175.5,242.3" /><polygon points="104.9,206.6 116.5,242.3 86.1,264.5 55.7,242.3 67.3,206.6" /><polygon points="79.5,128.4 49.1,150.5 18.6,128.4 30.3,92.6 67.9,92.6" /></g>
+  <path d="M146.0 114.0 L 146.0 80.1 M180.2 138.9 L 212.5 128.4 M167.2 179.1 L 187.1 206.6 M124.8 179.1 L 104.9 206.6 M111.8 138.9 L 79.5 128.4 " fill="none" stroke="#ffdf83" stroke-width="9" stroke-linecap="round" />
+  <polygon points="146.0,114.0 180.2,138.9 167.2,179.1 124.8,179.1 111.8,138.9" fill="#ffdf83" stroke="#e7b752" stroke-width="5" stroke-linejoin="round" />
+  <circle cx="146" cy="150" r="104" fill="none" stroke="#ffdf83" stroke-width="11" />
+  <g fill="#ffdf83" stroke="#e7b752" stroke-width="7" stroke-linejoin="round">
+    <path d="M214 236 H 280 a20 20 0 0 1 0 40 H 248 a34 34 0 1 1 -34 -40 Z" />
+    <circle cx="232" cy="270" r="9" fill="#7a5a20" stroke="none" />
+    <path d="M280 236 v-14" fill="none" stroke="#ffdf83" stroke-width="7" stroke-linecap="round" />
+  </g>
+</svg>

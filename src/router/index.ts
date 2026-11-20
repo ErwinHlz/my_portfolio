@@ -9,42 +9,42 @@ const router = createRouter({
     {
       path: '/home',
       name: 'home',
-      component: () => import('@/views/HomeView.vue'),
+      component: () => import('@/pages/home/HomeView.vue'),
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import('@/views/AboutView.vue'),
+      component: () => import('@/pages/about/AboutView.vue'),
     },
     {
       path: '/leistungen',
       name: 'services',
-      component: () => import('@/views/ServicesView.vue'),
+      component: () => import('@/pages/services/ServicesView.vue'),
     },
     {
       path: '/projekte',
       name: 'projects',
-      component: () => import('@/views/ProjectsView.vue'),
+      component: () => import('@/pages/projects/ProjectsView.vue'),
     },
     {
       path: '/playground',
       name: 'playground',
-      component: () => import('@/views/PlaygroundView.vue'),
+      component: () => import('@/pages/playground/PlaygroundView.vue'),
     },
     {
       path: '/contact',
       name: 'contact',
-      component: () => import('@/views/ContactView.vue'),
+      component: () => import('@/pages/contact/ContactView.vue'),
     },
     {
       path: '/datenschutz',
       name: 'privacy',
-      component: () => import('@/views/PrivacyView.vue'),
+      component: () => import('@/pages/legal/PrivacyView.vue'),
     },
     {
       path: '/impressum',
       name: 'imprint',
-      component: () => import('@/views/ImprintView.vue'),
+      component: () => import('@/pages/legal/ImprintView.vue'),
     },
     // alte URL weiterleiten
     { path: '/my-projects', redirect: '/projekte' },

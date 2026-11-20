@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <!-- Feierabend: Hantel (Fitness), Note (Showtanz) und Controller (Zocken) -->
+  <g fill="#ffdf83" stroke="#e7b752" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path fill-rule="evenodd" d="M96 160 H224 C 268 160, 292 196, 296 236 C 300 268, 280 284, 258 270 L 228 246 H92 L 62 270 C 40 284, 20 268, 24 236 C 28 196, 52 160, 96 160 Z M76 198 h14 v14 h14 v14 h-14 v14 h-14 v-14 h-14 v-14 h14 Z M236 196 a9 9 0 1 0 0.1 0 Z M256 218 a9 9 0 1 0 0.1 0 Z" />
+    <!-- Hantel -->
+    <rect x="40" y="58" width="16" height="56" rx="5" />
+    <rect x="60" y="66" width="12" height="40" rx="4" />
+    <rect x="72" y="80" width="56" height="12" rx="4" />
+    <rect x="128" y="66" width="12" height="40" rx="4" />
+    <rect x="144" y="58" width="16" height="56" rx="5" />
+    <!-- Note -->
+    <path d="M238 44 L 276 34 V 102 a16 13 0 1 1 -10 -12 V 58 L 248 63 V 114 a16 13 0 1 1 -10 -12 Z" />
+  </g>
+</svg>

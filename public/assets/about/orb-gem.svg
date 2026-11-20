@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <!-- Charakter statt Baukasten: geschliffener Edelstein über schlichten Bausteinen.
+       Facetten als echte Lücken, damit sie in der leuchtenden Kugel sichtbar bleiben. -->
+  <defs>
+    <mask id="facets">
+      <rect width="320" height="320" fill="#fff" />
+      <path d="M58 104 H262 M104 52 L 130 104 L 160 52 L 190 104 L 216 52 M130 104 L 160 226 L 190 104" fill="none" stroke="#000" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" />
+    </mask>
+  </defs>
+  <path d="M104 52 H216 L 262 104 L 160 226 L 58 104 Z" fill="#ffdf83" stroke="#ffdf83" stroke-width="6" stroke-linejoin="round" mask="url(#facets)" />
+  <g fill="#ffdf83" opacity="0.6">
+    <rect x="48" y="254" width="62" height="38" rx="5" />
+    <rect x="129" y="254" width="62" height="38" rx="5" />
+    <rect x="210" y="254" width="62" height="38" rx="5" />
+  </g>
+</svg>

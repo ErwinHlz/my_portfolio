@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <!-- Mein Werdegang: Doktorhut über einer Urkundenrolle mit Siegelband -->
+  <defs>
+    <mask id="gaps">
+      <rect width="320" height="320" fill="#fff" />
+      <!-- Fuge zwischen Rolle und Endkappen, Band -->
+      <path d="M96 200 V 262 M224 200 V 262" stroke="#000" stroke-width="6" />
+      <path d="M150 196 V 270 M170 196 V 270" stroke="#000" stroke-width="5" />
+    </mask>
+  </defs>
+  <g fill="#ffdf83">
+    <path d="M160 34 L 270 74 L 160 114 L 50 74 Z" />
+    <path d="M100 94 V 124 C 130 142, 190 142, 220 124 V 94 L 160 116 Z" />
+    <path d="M252 82 V 138" fill="none" stroke="#ffdf83" stroke-width="7" stroke-linecap="round" />
+    <circle cx="252" cy="144" r="10" />
+    <!-- Urkundenrolle -->
+    <g mask="url(#gaps)">
+      <rect x="70" y="196" width="180" height="70" rx="35" />
+    </g>
+    <!-- Siegel am Band -->
+    <path d="M148 262 L 140 300 L 160 290 L 180 300 L 172 262 Z" />
+  </g>
+</svg>

@@ -36,6 +36,8 @@
     #ffe7a3
   );
   --card-surface: linear-gradient(180deg, rgb(25 22 15 / 92%), rgb(11 10 7 / 96%));
+  /* leicht durchscheinend, z. B. Leistungskarten über dem Wald auf dem Handy */
+  --card-surface-glass: linear-gradient(180deg, rgb(25 22 15 / 62%), rgb(11 10 7 / 68%));
   --featured-surface: linear-gradient(180deg, rgb(30 26 17 / 95%), rgb(11 10 7 / 98%));
   --section-surface: rgb(19 17 12 / 60%);
   --field-surface: rgb(0 0 0 / 35%);
@@ -142,6 +144,7 @@
   --font-display: 'Cinzel', 'EB Garamond', georgia, serif;
   --font-body: 'Cormorant Garamond', 'EB Garamond', georgia, serif;
   --font-accent: 'UnifrakturCook', 'Cinzel', georgia, serif;
+  --font-hand: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
 
   /* Systemschrift, die Ionic bisher im Seiteninhalt verwendet hat */
   --font-ui: 'Roboto', 'Helvetica Neue', sans-serif;
@@ -149,8 +152,9 @@
 
 :root[data-theme='light'] {
   color-scheme: light;
-  --browser-theme-color: #f6f8fb;
-  --color-night: #f6f8fb;
+  --browser-theme-color: #eceef2;
+  /* heller Grund: ein zartes Hellgrau statt grellem Weiß */
+  --color-night: #eceef2;
   --color-shadow: #e1e8f0;
   --color-stone: #f9fbfd;
   --accent-gold: #694993;
@@ -171,6 +175,7 @@
   --primary-button-surface: linear-gradient(180deg, #f4effa, #e3d6f2);
   --gold-lettering: linear-gradient(200deg, #3d5974, #263f57 42%, #172d43 70%, #354f69);
   --card-surface: linear-gradient(180deg, #fcfdff, #eaf0f6);
+  --card-surface-glass: linear-gradient(180deg, rgb(244 246 249 / 70%), rgb(226 232 239 / 74%));
   --featured-surface: linear-gradient(180deg, #f8f3fc, #eae0f5);
   --section-surface: #e9eff5;
   --field-surface: #fff;
@@ -181,11 +186,13 @@
   --journey-track: rgb(109 73 151 / 43%);
   --journey-light: #7843b0;
   --journey-glow: rgb(147 92 207 / 41%);
+  /* heller Modus: hellgrauer, durchsichtigerer Schleier statt fast deckendem Weiß –
+     der Wald dahinter bleibt erkennbar */
   --forest-shade: radial-gradient(
     ellipse at 50% 44%,
-    rgb(248 248 251 / 94%),
-    rgb(242 240 248 / 85%) 58%,
-    rgb(232 228 242 / 70%)
+    rgb(236 238 242 / 62%),
+    rgb(228 230 237 / 50%) 58%,
+    rgb(218 220 230 / 40%)
   );
   --forest-mist: rgb(212 187 239 / 50%);
   --forest-beam: rgb(252 249 255 / 62%);
@@ -220,7 +227,7 @@
   --hero-image-filter: grayscale(0.45) saturate(0.6);
   --hero-image-opacity: 0.2;
   --hero-text-shadow: rgb(249 252 255 / 75%);
-  --home-backdrop: rgb(248 251 255 / 96%);
+  --home-backdrop: rgb(226 230 236 / 50%);
   --home-title: var(--text-heading);
   --home-title-shadow: 0 1px 2px #fff, 0 5px 18px rgb(78 54 112 / 19%);
   --header-home-surface: linear-gradient(

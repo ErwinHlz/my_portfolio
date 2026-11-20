@@ -5,9 +5,10 @@ Persönliches Portfolio von Erwin Holzhauser – gebaut mit Vue 3, Vite und Type
 ## Features
 
 - Interaktives, ziehbares Hintergrund-Grid auf der Startseite (mit Trägheit)
-- Projekt-Ansicht mit Einblicken im „Buch“, Lightbox und Fortschrittsanzeige
-- Timeline für den Werdegang, Skill-Karten, Hobbys
-- Responsive Navigation mit Seitenmenü, Footer mit Social Links
+- Projekte als blätterbares Buch (3D-Umblättern per Finger, Maus oder Tastatur)
+- Palantír-Kugel (WebGL) auf „Über mich“, Leistungen als Wald, Mini-Spiel im Playground
+- Navigation als Kreisbahn am Desktop, als ausziehbarer Kompass auf dem Handy
+- Hell-/Dunkelmodus über die Laterne, Footer mit Social Links
 
 ## Tech Stack
 
@@ -16,12 +17,35 @@ Persönliches Portfolio von Erwin Holzhauser – gebaut mit Vue 3, Vite und Type
 
 ## Struktur
 
-- `src/views/` – Seiten (`Home`, `About`, `Projects`, `Contact`)
-- `src/components/` – NavBar, SiteFooter, BgGrid, TimelineChart
-- `src/composables/` – wiederverwendbare Logik (Drag/Pan, Footer-Modus)
-- `src/data/` – Inhalte (Skills, Timeline, Projekte)
-- `src/styles/` – Design-Tokens (`variables.scss`) und globale Styles
-- `public/assets/` – Bilder, Icons, SVG-Sprites
+```
+src/
+├─ main.ts, App.vue     Einstieg und App-Hülle
+├─ router/              Routen (lädt die Seiten aus pages/)
+├─ styles/              Design-Tokens (variables.scss) und globale Styles
+├─ layout/              App-Rahmen, auf jeder Seite: NavBar, NavOrb, MobileCompass,
+│                       ThemeLantern, SiteFooter (+ useFooterMode)
+├─ shared/              seitenübergreifend wiederverwendbar
+│  ├─ components/       PageHero, CallToAction
+│  ├─ orb/              Palantír-Rendering (Navigation + Über mich)
+│  ├─ data/             siteOwner (Name, Kontakt)
+│  └─ directives/       v-reveal
+└─ pages/<seite>/       eine Seite = ein Ordner
+   ├─ <Seite>View.vue   die Seite selbst (wird vom Router geladen)
+   ├─ components/       Komponenten nur dieser Seite
+   ├─ lib/ | engine/    Canvas- und Logik-Module ohne UI
+   ├─ composables/      Vue-Logik nur dieser Seite
+   └─ data/             Inhalte der Seite
+```
+
+Seiten: `home`, `about`, `services`, `projects`, `playground`, `contact`, `legal`.
+
+**Regeln**
+
+- Eine Seite importiert nur aus sich selbst, `shared/` und `layout/` – nie aus einer anderen Seite.
+- Wird etwas von einer zweiten Seite gebraucht, wandert es nach `shared/`.
+- Innerhalb einer Seite relativ importieren (`./components/…`), über Grenzen hinweg mit `@/`.
+
+`public/assets/` enthält Bilder, Icons und SVG-Sprites.
 
 ## Entwicklung
 
