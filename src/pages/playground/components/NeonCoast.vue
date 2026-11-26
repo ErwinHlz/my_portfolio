@@ -269,118 +269,127 @@ onBeforeUnmount(() => {
 <template>
   <!-- im Ersatz-Vollbild direkt in den body, damit kein Elternelement die Szene einschränkt -->
   <Teleport to="body" :disabled="!pseudoFullscreen">
-  <div
-    ref="root"
-    class="neon"
-    :class="[`is-${phase}`, { 'is-fullscreen': pseudoFullscreen }]"
-    :style="{ '--neon-a': accentHex[0], '--neon-b': accentHex[1] }"
-    @pointermove="onPointerMove"
-    @pointerleave="onPointerLeave"
-  >
-    <canvas
-      ref="canvas"
-      class="neon__canvas"
-      role="img"
-      :aria-label="sceneLabel"
-      @pointerdown="onCanvasDown"
-      @pointerup="releaseThrottle"
-      @pointercancel="releaseThrottle"
-      @lostpointercapture="releaseThrottle"
-    ></canvas>
-
     <div
-      ref="sign"
-      class="neon__sign"
-      :class="{ 'is-visible': atCoast, 'is-lit': atCoast && isNight }"
-      aria-hidden="true"
+      ref="root"
+      class="neon"
+      :class="[`is-${phase}`, { 'is-fullscreen': pseudoFullscreen }]"
+      :style="{ '--neon-a': accentHex[0], '--neon-b': accentHex[1] }"
+      @pointermove="onPointerMove"
+      @pointerleave="onPointerLeave"
     >
-      <span class="logo logo--coast"><span class="logo__outline"></span></span>
-    </div>
+      <canvas
+        ref="canvas"
+        class="neon__canvas"
+        role="img"
+        :aria-label="sceneLabel"
+        @pointerdown="onCanvasDown"
+        @pointerup="releaseThrottle"
+        @pointercancel="releaseThrottle"
+        @lostpointercapture="releaseThrottle"
+      ></canvas>
 
-    <div v-if="!atCoast" class="neon__chapter" :class="{ 'is-night': isNight }" aria-hidden="true">
-      <span class="logo logo--shire"></span>
-    </div>
-
-    <div class="music" :class="{ 'is-open': musicOpen }">
-      <div class="music__buttons">
-      <button type="button" class="corner-btn" :aria-pressed="isFullscreen" @click="toggleFullscreen">
-        <svg v-if="!isFullscreen" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" />
-        </svg>
-        <svg v-else viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" />
-        </svg>
-        <span class="sr-only">{{ isFullscreen ? 'Vollbild beenden' : 'Vollbild' }}</span>
-      </button>
-      <button
-        type="button"
-        class="corner-btn music__toggle"
-        :class="{ 'is-playing': spotifyPlaying }"
-        :aria-expanded="musicOpen"
-        aria-controls="playground-music"
-        @click="toggleMusic"
+      <div
+        ref="sign"
+        class="neon__sign"
+        :class="{ 'is-visible': atCoast, 'is-lit': atCoast && isNight }"
+        aria-hidden="true"
       >
-        <span aria-hidden="true">♪</span>
-        <span class="sr-only">Musik {{ musicOpen ? 'ausblenden' : 'einblenden' }}</span>
-      </button>
+        <span class="logo logo--coast"><span class="logo__outline"></span></span>
       </div>
-      <!-- bleibt eingebunden, damit die Musik beim Zuklappen weiterläuft -->
-      <div id="playground-music" class="music__panel" :inert="!musicOpen">
-        <SpotifyPlayer ref="spotify" :track="song" @playing="onSpotifyPlaying" />
+
+      <div
+        v-if="!atCoast"
+        class="neon__chapter"
+        :class="{ 'is-night': isNight }"
+        aria-hidden="true"
+      >
+        <span class="logo logo--shire"></span>
       </div>
-    </div>
 
-    <button v-if="offerVisible" ref="bikeButton" type="button" class="neon__bike" @click="mount">
-      <span class="sr-only">
-        {{
-          atCoast
-            ? 'in die Kutsche steigen und zurück ins Grüne fahren'
-            : 'aufs Motorrad steigen und zur Neon Coast fahren'
-        }}
-      </span>
-    </button>
+      <div class="music" :class="{ 'is-open': musicOpen }">
+        <div class="music__buttons">
+          <button
+            type="button"
+            class="corner-btn"
+            :aria-pressed="isFullscreen"
+            @click="toggleFullscreen"
+          >
+            <svg v-if="!isFullscreen" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" />
+            </svg>
+            <svg v-else viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" />
+            </svg>
+            <span class="sr-only">{{ isFullscreen ? 'Vollbild beenden' : 'Vollbild' }}</span>
+          </button>
+          <button
+            type="button"
+            class="corner-btn music__toggle"
+            :class="{ 'is-playing': spotifyPlaying }"
+            :aria-expanded="musicOpen"
+            aria-controls="playground-music"
+            @click="toggleMusic"
+          >
+            <span aria-hidden="true">♪</span>
+            <span class="sr-only">Musik {{ musicOpen ? 'ausblenden' : 'einblenden' }}</span>
+          </button>
+        </div>
+        <!-- bleibt eingebunden, damit die Musik beim Zuklappen weiterläuft -->
+        <div id="playground-music" class="music__panel" :inert="!musicOpen">
+          <SpotifyPlayer ref="spotify" :track="song" @playing="onSpotifyPlaying" />
+        </div>
+      </div>
 
-    <!-- Tag/Nacht im Grünen: kleiner Holzwegweiser -->
-    <div v-if="phase === 'shire'" class="daynight-sign" role="group" aria-label="Tageszeit">
-      <span class="daynight-sign__post" aria-hidden="true"></span>
-      <button
-        type="button"
-        class="daynight-sign__plank daynight-sign__plank--day"
-        :aria-pressed="!isNight"
-        aria-label="Tag"
-        @click="isNight = false"
-      >
-        <span aria-hidden="true">☀</span>
+      <button v-if="offerVisible" ref="bikeButton" type="button" class="neon__bike" @click="mount">
+        <span class="sr-only">
+          {{
+            atCoast
+              ? 'in die Kutsche steigen und zurück ins Grüne fahren'
+              : 'aufs Motorrad steigen und zur Neon Coast fahren'
+          }}
+        </span>
       </button>
+
+      <!-- Tag/Nacht im Grünen: kleiner Holzwegweiser -->
+      <div v-if="phase === 'shire'" class="daynight-sign" role="group" aria-label="Tageszeit">
+        <span class="daynight-sign__post" aria-hidden="true"></span>
+        <button
+          type="button"
+          class="daynight-sign__plank daynight-sign__plank--day"
+          :aria-pressed="!isNight"
+          aria-label="Tag"
+          @click="isNight = false"
+        >
+          <span aria-hidden="true">☀</span>
+        </button>
+        <button
+          type="button"
+          class="daynight-sign__plank daynight-sign__plank--night"
+          :aria-pressed="isNight"
+          aria-label="Nacht"
+          @click="isNight = true"
+        >
+          <span aria-hidden="true">☾</span>
+        </button>
+      </div>
+
+      <!-- Tag/Nacht an der Küste: Drehschalter wie im Armaturenbrett, Klick schaltet um -->
       <button
+        v-if="phase === 'neon'"
         type="button"
-        class="daynight-sign__plank daynight-sign__plank--night"
-        :aria-pressed="isNight"
-        aria-label="Nacht"
-        @click="isNight = true"
+        class="dash-knob"
+        role="switch"
+        :aria-checked="isNight"
+        aria-label="Nachtmodus"
+        @click="isNight = !isNight"
       >
-        <span aria-hidden="true">☾</span>
+        <span class="dash-knob__icon dash-knob__icon--day" aria-hidden="true">☀</span>
+        <span class="dash-knob__icon dash-knob__icon--night" aria-hidden="true">☾</span>
+        <span class="dash-knob__dial" aria-hidden="true">
+          <span class="dash-knob__cap"></span>
+        </span>
       </button>
     </div>
-
-    <!-- Tag/Nacht an der Küste: Drehschalter wie im Armaturenbrett, Klick schaltet um -->
-    <button
-      v-if="phase === 'neon'"
-      type="button"
-      class="dash-knob"
-      role="switch"
-      :aria-checked="isNight"
-      aria-label="Nachtmodus"
-      @click="isNight = !isNight"
-    >
-      <span class="dash-knob__icon dash-knob__icon--day" aria-hidden="true">☀</span>
-      <span class="dash-knob__icon dash-knob__icon--night" aria-hidden="true">☾</span>
-      <span class="dash-knob__dial" aria-hidden="true">
-        <span class="dash-knob__cap"></span>
-      </span>
-    </button>
-
-  </div>
   </Teleport>
 </template>
 
@@ -985,7 +994,6 @@ onBeforeUnmount(() => {
   .music__panel {
     width: min(320px, calc(100vw - 28px));
   }
-
 }
 
 @media (width <= 700px) {

@@ -289,7 +289,12 @@ export class FireDragon {
    * Körper als Leuchtband: breiter zarter Schein, darüber ein hellerer Strang
    * und ein feiner, fast weißer Kern – dazu funkelnde Glitzerpunkte.
    */
-  private drawBody(ctx: CanvasRenderingContext2D, segs: Segment[], time: number, glow: number): void {
+  private drawBody(
+    ctx: CanvasRenderingContext2D,
+    segs: Segment[],
+    time: number,
+    glow: number,
+  ): void {
     ctx.globalCompositeOperation = 'lighter';
     const passes: [number, number, number][] = [
       // Breite (× Radius), Deckkraft, Weißanteil
@@ -317,7 +322,7 @@ export class FireDragon {
         const twinkle = Math.sin(time * 9 + seg.i * 2.3 + k * 4.1);
         if (twinkle < 0.4) continue;
         const ang = seg.i * 1.7 + k * 3 + time * 0.8;
-        const d = seg.r * (0.4 + 0.6 * ((seg.i * 7 + k * 3) % 5) / 5);
+        const d = seg.r * (0.4 + (0.6 * ((seg.i * 7 + k * 3) % 5)) / 5);
         const x = seg.x + Math.cos(ang) * d;
         const y = seg.y + Math.sin(ang) * d;
         const size = Math.max(1, seg.r * 0.18) * (twinkle - 0.3);
@@ -337,7 +342,13 @@ export class FireDragon {
   }
 
   /** vierzackiger Funkelstern */
-  private star(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, color: string): void {
+  private star(
+    ctx: CanvasRenderingContext2D,
+    x: number,
+    y: number,
+    size: number,
+    color: string,
+  ): void {
     ctx.fillStyle = color;
     ctx.beginPath();
     ctx.moveTo(x, y - size * 2);
@@ -419,7 +430,13 @@ export class FireDragon {
       // funkelnde Spitzen
       for (const [i, p] of [tip, ...fingers].entries()) {
         const tw = 0.6 + 0.4 * Math.sin(time * 8 + i * 1.9 + side);
-        this.star(ctx, p[0], p[1], Math.max(1.5, shoulder.r * 0.3) * tw, rgba(WARM_WHITE, 0.75 * glow));
+        this.star(
+          ctx,
+          p[0],
+          p[1],
+          Math.max(1.5, shoulder.r * 0.3) * tw,
+          rgba(WARM_WHITE, 0.75 * glow),
+        );
       }
       ctx.restore();
     }
@@ -502,7 +519,13 @@ export class FireDragon {
       ctx.beginPath();
       ctx.arc(ex, ey, hs * 0.3, 0, TAU);
       ctx.fill();
-      this.star(ctx, ex, ey, hs * 0.07 * (0.8 + 0.2 * Math.sin(time * 6)), rgba(WARM_WHITE, 0.9 * glow));
+      this.star(
+        ctx,
+        ex,
+        ey,
+        hs * 0.07 * (0.8 + 0.2 * Math.sin(time * 6)),
+        rgba(WARM_WHITE, 0.9 * glow),
+      );
     }
     ctx.restore();
   }
